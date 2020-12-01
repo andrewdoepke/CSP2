@@ -21,7 +21,7 @@
     height: 200px;
     box-sizing: border-box;
     background-color: #cccccc;
-    border-radius: inherit;
+    border-radius: 5px 5px 0px 0px;
 }
 
 .card-description {
