@@ -50,6 +50,9 @@
 	flex-direction: row;
 	background-color: #404040;
 
+    bottom: 0;
+
+    padding-top: 1em;
 }
 
 .footer-contact-info {
@@ -67,6 +70,7 @@
 	height: 2em;
 	float: left;
 	padding-right: 0.5em;
+	margin-top: 0.5em;
 }
 
 /* ------------------------------------------------------------------------ */
