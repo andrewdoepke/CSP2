@@ -1,0 +1,23 @@
+.display-download-options {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.option-selection {
+    width: 300px;
+    height: 200px;
+    border-style: solid;
+    margin: 10px;
+}
+
+.selection-displayed {
+    margin-top: 10px;
+}
+
+@media screen and (max-width: 700px) {          /* was not working in global css */
+    .display-download-options {
+        flex-direction: column;
+        align-items: center;
+	}
+}

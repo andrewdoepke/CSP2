@@ -19,8 +19,11 @@
 		</div>
 <!-- Main Body of Page -->
 		<div class = "main">
+			<div id = "make-blog-post">
+				<a href="new-blog-post.html"><input type="button" value = "Create a Post" id = "new-post"></a>
+	    	</div>
 			<div class = "list-blog-posts">
-				<table class="table is-striped is-fullwidth">
+				<table class="listings">
 	       			<!-- {% for movie_key, movie in movies %} -->
 	        		<tr>
 	          			<td>
@@ -33,13 +36,40 @@
 				              {{ movie.title }}
 				              {% if movie.year %} ({{ movie.year }}) {% endif %}
 				            </a> -->
+							<label>Title of Post (placeholder 1)</label>
 				        </td>
 	       			</tr>
-	        <!-- {% endfor %} -->
+	        <!-- {% endfor %} --> <!-- Here would be the end of the table for the add from .... just copy and pasting for styling -->
+					<!-- Delete from here down to </table> as this is not needed, simply a placeholder -->
+					<tr>
+	          			<td>
+				            <!-- {% if current_user.is_admin %} -->
+				            <label class="checkbox">
+				              <input type="checkbox" name="movie_keys" /> <!--value="{{ movie_key }}" -->
+				            </label>
+				            <!-- {% endif %} -->
+				            <!--<a href="{{ url_for('movie_page', movie_key=movie_key) }}">
+				              {{ movie.title }}
+				              {% if movie.year %} ({{ movie.year }}) {% endif %}
+				            </a> -->
+							<label>Title of Post (placeholder 2)</label>
+				        </td>
+	       			</tr>
+					<tr>
+	          			<td>
+				            <!-- {% if current_user.is_admin %} -->
+				            <label class="checkbox">
+				              <input type="checkbox" name="movie_keys" /> <!--value="{{ movie_key }}" -->
+				            </label>
+				            <!-- {% endif %} -->
+				            <!--<a href="{{ url_for('movie_page', movie_key=movie_key) }}">
+				              {{ movie.title }}
+				              {% if movie.year %} ({{ movie.year }}) {% endif %}
+				            </a> -->
+							<label>Title of Post (placeholder 3)</label>
+				        </td>
+	       			</tr>
 	    		</table>
-	    	</div>
-	    	<div id = "make-blog-post">
-
 	    	</div>
 		</div>
 <!-- Footer -->

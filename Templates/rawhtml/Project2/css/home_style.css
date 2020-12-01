@@ -1,8 +1,8 @@
 .get-mc {
 	width: 100%;
-	height: 40%;
+	height: 60vh;
 	border-style: solid;
-	margin: 0;
+	margin-bottom: 10px;
 	display: flex;
 	flex-direction: row;
 	box-sizing: border-box;
@@ -10,17 +10,26 @@
 
 #get-mc-home-img {
 	width: 80%;
-	background-color: black;
+}
+
+#image-home {
+    width: 100%;
+    height: 100%;
 }
 
 #get-mc-button-np {
+    text-align: left;
 	width: 20%;
 	padding: 15px;
 }
 
+#get-mc-button-np > p {
+    margin: 0;
+}
+
 #link-get-mc {
-	width: 100%;
 	font-family: Didot;
+	width: 6em;
 }
 
 .new-features {

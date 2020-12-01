@@ -19,27 +19,57 @@
 		</div>
 <!-- Main Body of Page -->
 		<div class = "main">
-            <div class = "list-world-seeds">
-                    <table>
-                        <!-- {% for world_seed_key, seed in worlds %} -->
-                        <tr>
-                            <td>
-                                <!-- {% if current_user.is_admin %} -->
-                                <label class="checkbox">
-                                  <input type="checkbox" name="movie_keys" /> <!--value="{{ movie_key }}" -->
-                                </label>
-                                <!-- {% endif %} -->
-                                <!--<a href="{{ url_for('movie_page', movie_key=movie_key) }}">
-                                  {{ movie.title }}
-                                  {% if movie.year %} ({{ movie.year }}) {% endif %}
-                                </a> -->
-                            </td>
-                        </tr>
-                <!-- {% endfor %} -->
-                    </table>
+			<div id = "create-world-seed">
+				<a href="new-world-seed.html"><input type="button" value = "Add a World Seed" id = "new-seed"></a>
             </div>
-            <div id = "create-world-seed">
-
+            <div class = "list-world-seeds">
+                    <table class="listings">
+	       			<!-- {% for movie_key, movie in movies %} -->
+	        		<tr>
+	          			<td>
+				            <!-- {% if current_user.is_admin %} -->
+				            <label class="checkbox">
+				              <input type="checkbox" name="movie_keys" /> <!--value="{{ movie_key }}" -->
+				            </label>
+				            <!-- {% endif %} -->
+				            <!--<a href="{{ url_for('movie_page', movie_key=movie_key) }}">
+				              {{ movie.title }}
+				              {% if movie.year %} ({{ movie.year }}) {% endif %}
+				            </a> -->
+							<label>World Description (placeholder 1)</label>
+				        </td>
+	       			</tr>
+	        <!-- {% endfor %} --> <!-- Here would be the end of the table for the add from .... just copy and pasting for styling -->
+					<!-- Delete from here down to </table> as this is not needed, simply a placeholder -->
+					<tr>
+	          			<td>
+				            <!-- {% if current_user.is_admin %} -->
+				            <label class="checkbox">
+				              <input type="checkbox" name="movie_keys" /> <!--value="{{ movie_key }}" -->
+				            </label>
+				            <!-- {% endif %} -->
+				            <!--<a href="{{ url_for('movie_page', movie_key=movie_key) }}">
+				              {{ movie.title }}
+				              {% if movie.year %} ({{ movie.year }}) {% endif %}
+				            </a> -->
+							<label>World Description (placeholder 2)</label>
+				        </td>
+	       			</tr>
+					<tr>
+	          			<td>
+				            <!-- {% if current_user.is_admin %} -->
+				            <label class="checkbox">
+				              <input type="checkbox" name="movie_keys" /> <!--value="{{ movie_key }}" -->
+				            </label>
+				            <!-- {% endif %} -->
+				            <!--<a href="{{ url_for('movie_page', movie_key=movie_key) }}">
+				              {{ movie.title }}
+				              {% if movie.year %} ({{ movie.year }}) {% endif %}
+				            </a> -->
+							<label>World Description (placeholder 3)</label>
+				        </td>
+	       			</tr>
+	    		</table>
             </div>
 		</div>
 <!-- Footer -->

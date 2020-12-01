@@ -37,21 +37,20 @@
 /* ------------------------------------------------------------------------ */
 
 .footer {
-	padding: 0.75em;
+	/* padding: 0.75em; */
 	width: 100%;
 	/* height: 14em; */
 	box-sizing: border-box;
 	display: flex;
 	flex-direction: row;
 	background-color: #404040;
-	justify-content: center;
+
 }
 
 .footer-contact-info {
-	/* width: 10em; */
 	box-sizing: border-box;
 	margin: 10px;
-	padding: 0px 20px;
+	padding: 10px 10px;
 	font-family: Optima, Didot;
 }
 
@@ -71,6 +70,21 @@
 	.navigation {
 		flex-direction: column;
 	}
+
+    /* This is not working as it should
+            .display-download-options {
+                flex-direction: column;
+            }
+    */
+
+    .get-mc {
+        flex-direction: column;
+    }
+
+    #get-mc-home-img, #get-mc-button-np {
+        width: 100%;
+    }
+
 }
 
 /* Small Display */
