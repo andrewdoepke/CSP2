@@ -3,6 +3,9 @@
     top: 0;
 }
 
+.to-top {
+    text-align: center;
+}
 
 .header {
 	padding: 20px;
@@ -127,7 +130,7 @@ html{
 *,
 *:before,
 *:after {
-  box-sizing: inherit;
+    box-sizing: inherit;
 }
 
 body {
@@ -145,15 +148,19 @@ a {
 }
 
 p, li, input {
-  margin-top: 0;
-  font-family: Didot;
-  font-size: 1.2em;
+    margin-top: 0;
+    font-family: Didot;
+    font-size: 1.2em;
 }
 
 h1, h2, h3 {
-  margin-top: 0;
-  margin-bottom: 0;
-  font-family: Didot;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-family: Didot;
+}
+
+ul {
+	list-style: circle;
 }
 
 /* ------------------------------------------------------------------------ */
