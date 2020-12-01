@@ -1,3 +1,9 @@
+.stickysticky {
+    position: sticky;
+    top: 0;
+}
+
+
 .header {
 	padding: 20px;
 	text-align: center;
@@ -13,6 +19,7 @@
 	display: flex;
 	justify-content: center;
 	background-color: #003300;
+	position: sticky;
 }
 
 .navigation a {
