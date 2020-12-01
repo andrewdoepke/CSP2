@@ -13,6 +13,7 @@
     margin: 0 5px;
     display: flex;
     flex-direction: column;
+    border-radius: 5px;
 }
 
 .card-image {
@@ -20,6 +21,7 @@
     height: 200px;
     box-sizing: border-box;
     background-color: #cccccc;
+    border-radius: inherit;
 }
 
 .card-description {
@@ -28,6 +30,7 @@
     box-sizing: border-box;
     /* border-style: solid; */
     padding: 5px;
+    border-radius: inherit;
 }
 
 .build-feedback-perc {
