@@ -10,12 +10,12 @@
 #get-mc-home-img {
 	width: 80%;
 	border-style: solid;
-
 }
 
 #image-home {
+    height: auto;
     width: 100%;
-    height: 100%;
+    display:block;
 }
 
 #get-mc-button-np {
@@ -24,21 +24,20 @@
 	padding: 15px;
 }
 
-#get-mc-button-np > p {
-    margin: 0;
-}
-
 
 #link-get-mc {
 	font-family: Didot;
 	width: 7em;
 }
 
-.new-features {
+.new-features, #scroller {
 	display: flex;
-	flex-direction: row;
 	align-items: center;
 	justify-content: center;
+}
+
+.new-features {
+   	flex-direction: column;
 }
 
 #go-back {
@@ -72,4 +71,13 @@
       #get-mc-home-img{
         margin-left: -1%;
        }
+
+    .main div{
+        margin-bottom: 1vh;
+    }
+}
+
+.main div{
+    height: auto;
+    margin-bottom: 2vh;
 }
