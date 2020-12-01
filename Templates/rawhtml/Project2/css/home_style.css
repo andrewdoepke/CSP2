@@ -67,3 +67,9 @@
     width: 100%;
     height: 100%;
 }
+
+@media (max-width: 49.9375em) {
+      #get-mc-home-img{
+        margin-left: -1%;
+       }
+}
