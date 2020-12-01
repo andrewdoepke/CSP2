@@ -1,9 +1,8 @@
 #make-blog-post {
-    border-style: solid;
-    width: 50px;
-
+    margin: 0 auto 10px;            /* centered and bottom margin of 10px */
 }
 
-#new-post {
-    /* Need to align button to center "justify-content: center;" */
-}
+
+
+
+
