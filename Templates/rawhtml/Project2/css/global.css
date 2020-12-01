@@ -95,7 +95,7 @@
 }
 
 /* Small Display */
-@media (min-width: 34em) and (max-width: 49.9375em) {
+@media (max-width: 49.9375em) {
     .stickysticky {
         position: static;
     }
