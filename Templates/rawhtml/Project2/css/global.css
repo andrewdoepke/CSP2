@@ -44,8 +44,8 @@
 }
 
 .check-box-input {
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
 }
 
 /* ------------------------------------------------------------------------ */
@@ -158,13 +158,14 @@ p, li, input, label, textarea, button {
     font-size: 1.45em;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4, h5, h6 {
     margin-top: 0;
     margin-bottom: 0;
     font-family: Didot;
 }
 
 ul {
+    margin-top: 0;
 	list-style: circle;
 }
 
@@ -178,7 +179,10 @@ table {
 }
 
 td {
+    padding: 10px 0;
     font-size: 1.75em;
+    border-bottom: 3px solid #194d19;
+    border-collapse: collapse;
 }
 
 td:hover {
