@@ -1,0 +1,20 @@
+.tag-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.tag-col {
+    margin-right: 15px;
+    min-width: 30%;
+}
+
+#seed-desc, #seed-num {
+    width: 100%;
+}
+
+.tag-check-box {
+    width: 20px;
+    height: 20px;
+}
