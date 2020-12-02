@@ -129,7 +129,7 @@
 
 html{
     height: 100%;
-     box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 *,
@@ -152,7 +152,7 @@ a {
 	color: black;
 }
 
-p, li, input, label {
+p, li, input, label, textarea, button {
     margin-top: 0;
     font-family: Didot;
     font-size: 1.45em;

@@ -11,6 +11,15 @@
     align-items: left;
 }
 
-#login button{
-    margin-left: 8em;
+.main {
+    display:flex;
+    align-content: center;
+    justify-content: center;
+
 }
+
+.login-container {
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
