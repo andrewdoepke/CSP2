@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>World Seeds</title>
+			<meta charset="UTF-8">
+			<link rel="stylesheet" href="css/global.css">
+			<link rel="icon" href="images/favicon.ico">
+	</head>
+	<body>
+	<a name="to-get-mc-top"></a>
+<!-- Banner at Head of Webpage -->
+<div class="stickysticky">
+		<div class = "header">World Seeds</div>
+<!-- Navigation Bar -->
+		<div class = "navigation">
+			<a href="homepage.html">Home</a>
+			<a href="get-minecraft.html">Get Minecraft</a>
+			<a href="blog-posts.html">Blog Posts</a>
+			<a href="world-seeds.html">World Seeds</a>
+			<a href="build-ideas.html">Build Ideas</a>
+			<a href="admin-login.html">Login</a>
+		</div>
+</div>
+<!-- Main Body of Page -->
+		<div class = "main">
+			<div id = "create-world-seed">
+				<a href="new-world-seed.html"><center><input type="button" value = "Add a World Seed" id = "new-seed"></center></a>
+            </div>
+            <div class = "list-world-seeds">
+                    <table class="listings">
+	       			<!-- {% for movie_key, movie in movies %} -->
+	        		<tr>
+	          			<td>
+				            <!-- {% if current_user.is_admin %} -->
+				            <label class="checkbox">
+				              <input type="checkbox" class = "check-box-input" name="seed-desc" /> <!--value="{{ movie_key }}" -->
+				            </label>
+				            <!-- {% endif %} -->
+				            <!--<a href="{{ url_for('movie_page', movie_key=movie_key) }}">
+				              {{ movie.title }}
+				              {% if movie.year %} ({{ movie.year }}) {% endif %}
+				            </a> -->
+							<label>World Description (placeholder 1)</label>
+				        </td>
+	       			</tr>
+	        <!-- {% endfor %} --> <!-- Here would be the end of the table for the add from .... just copy and pasting for styling -->
+					<!-- Delete from here down to </table> as this is not needed, simply a placeholder -->
+					<tr>
+	          			<td>
+				            <!-- {% if current_user.is_admin %} -->
+				            <label class="checkbox">
+				              <input type="checkbox" class = "check-box-input" name="seed-desc" /> <!--value="{{ movie_key }}" -->
+				            </label>
+				            <!-- {% endif %} -->
+				            <!--<a href="{{ url_for('movie_page', movie_key=movie_key) }}">
+				              {{ movie.title }}
+				              {% if movie.year %} ({{ movie.year }}) {% endif %}
+				            </a> -->
+							<label>World Description (placeholder 2)</label>
+				        </td>
+	       			</tr>
+					<tr>
+	          			<td>
+				            <!-- {% if current_user.is_admin %} -->
+				            <label class="checkbox">
+				              <input type="checkbox" class = "check-box-input" name="seed-desc" /> <!--value="{{ movie_key }}" -->
+				            </label>
+				            <!-- {% endif %} -->
+				            <!--<a href="{{ url_for('movie_page', movie_key=movie_key) }}">
+				              {{ movie.title }}
+				              {% if movie.year %} ({{ movie.year }}) {% endif %}
+				            </a> -->
+							<label>World Description (placeholder 3)</label>
+				        </td>
+	       			</tr>
+	    		</table>
+            </div>
+			<a href="#to-get-mc-top"><h3 class="to-top">Back to Top</h3></a>
+		</div>
+<!-- Footer -->
+		<div class = "footer">
+			<div class = "footer-contact-info">
+				<h3>Check out the official Minecraft social media for more</h3>
+				<a href="https://www.instagram.com/minecraft/" target="_blank"><img alt="Intagram logo" src="images/instagram-logo.png" class = "social-media-links"></a>
+				<a href="https://twitter.com/Minecraft" target="_blank"><img alt="Twitter logo" src="images/twitter-logo.png" class = "social-media-links"></a>
+				<a href="https://www.youtube.com/Minecraft" target="_blank"><img alt="YouTube logo" src="images/youtube-logo.png" class = "social-media-links"></a>
+				<a href="https://www.facebook.com/minecraft/" target="_blank"><img alt="Facebook logo" src="images/facebook-logo.png" class = "social-media-links"></a>
+			</div>
+		</div>
+	</body>
+</html>
