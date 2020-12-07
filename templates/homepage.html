@@ -1,0 +1,47 @@
+{% extends "template.html" %}
+
+{% block localcss %}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/home_style.css')}}">
+{% endblock %}
+
+{% block content %}
+    <!-- Main Body of Page -->
+		<div class = "main">
+			<div class = "get-mc">
+				<div id = "get-mc-home-img">
+					<img src="{{url_for('static', filename='images/get-mc1.jpg')}}" alt="Get Minecraft Image" id = "image-home">
+				</div>
+				<div id = "get-mc-button-np">
+					<p>Join the Minecraft community today!</p>	<!-- for smaller display, have button on same line -->
+
+
+			<!-- Make a javacript for this for the onclick using: document.getElementById("link-get-mc").onclick = function () {
+        location.href = "get-minecraft.html"; };-->
+ 					<a href="get-minecraft.html"><input type="button" value = "Get Minecraft" id = "link-get-mc"></a>
+				</div>
+			</div>
+			<div id = "about-mc">
+				<h1>About Minecraft</h1>
+				<p>This is some text about minecraft, we will fill this in later but for now this is some placeholder
+					text yada yada yada. This is some text about minecraft, we will fill this in later but for now this
+					is some placeholder text yada yada yada.This is some text about minecraft, we will fill this in
+					later but for now this is some placeholder text yada yada yada.</p>
+			</div>
+
+			<div class = "new-features">
+				<h1>New Features</h1>
+				<div id="scroller">
+					<div id = "go-back">
+						<img src="{{url_for('static', filename='images/back.png')}}" alt="Back" class="arrows" id="back-arrow">
+					</div>
+					<div id = "feature-img">
+						<img src="{{url_for('static', filename='images/new-characters.png')}}" alt="Feature" id = "feature">
+					</div>
+					<div id = "go-next">
+						<img src="{{url_for('static', filename='images/next.png')}}" alt="Next" class="arrows" id="next-arrow">
+					</div>
+				</div>
+			</div>
+			<p id = "-new-feature-title" align="center">New Characters</p>
+		</div>
+{% endblock %}
