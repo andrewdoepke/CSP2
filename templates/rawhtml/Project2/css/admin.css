@@ -1,0 +1,25 @@
+#login label, input, button{
+    margin-bottom: 0.5em;
+}
+
+#login input {
+    width: 15em;
+}
+
+#login label{
+    display: flex;
+    align-items: left;
+}
+
+.main {
+    display:flex;
+    align-content: center;
+    justify-content: center;
+
+}
+
+.login-container {
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
