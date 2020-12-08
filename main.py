@@ -19,9 +19,19 @@ def blog():
     return render_template('blog-posts.html', title="Blog Posts")
 
 
+@app.route('/newpost', methods=['GET', 'POST'])
+def newblog():
+    return render_template('new-blog-post.html')
+
+
 @app.route('/worldseed', methods=['GET', 'POST'])
 def ws():
     return render_template('world-seeds.html', title="World Seeds")
+
+
+@app.route('/newseed', methods=['GET', 'POST'])
+def newworldseed():
+    return render_template('new-world-seed.html')
 
 
 @app.route('/buildideas', methods=['GET', 'POST'])
