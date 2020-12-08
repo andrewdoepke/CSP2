@@ -45,22 +45,6 @@
 
 /* ------------------------------------------------------------------------ */
 
-.footer {
-	/* padding: 0.75em; */
-	width: 100%;
-	/* height: 14em; */
-	box-sizing: border-box;
-	display: flex;
-	flex-direction: row;
-	background-color: #404040;
-
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-}
-
-
 .footer-contact-info {
 	box-sizing: border-box;
 	margin: 10px;
@@ -77,6 +61,10 @@
 	float: left;
 	padding-right: 0.5em;
 	margin-top: 0.5em;
+}
+
+.main {
+	margin: 0;
 }
 
 /* ------------------------------------------------------------------------ */
@@ -123,24 +111,31 @@
 /* ------------------------------------------------------------------------ */
 
 html{
-    min-height: 100%;
-    box-sizing: border-box;
-}
-
-*,
-*:before,
-*:after {
-    box-sizing: inherit;
+    height: 100%;
+    margin:0;
+    padding:0;
 }
 
 body {
-    position: relative;
     margin: 0;
-    min-height: 100%;
+    padding: 0;
+    height: 100%;
     background-color: #006600;
-    padding-bottom: 7rem;
 }
 
+#contain {
+   min-height:100%;
+   position:relative;
+}
+
+.footer {
+    position: absolute;
+    bottom:0;
+    width:100%;
+	display: flex;
+	flex-direction: row;
+	background-color: #404040;
+}
 
 a {
 	text-decoration: none;
@@ -186,8 +181,4 @@ td:hover {
 
 /* ------------------------------------------------------------------------ */
 
-.main {
-	margin: 0;
-	padding: 10px;
-	min-height: 100%;
-}
+
