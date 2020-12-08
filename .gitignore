@@ -7,6 +7,10 @@ constants.py
 #conf
 pyvenv.cfg
 
+#pycharm stuff
+CSP2.iml
+misc.xml
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
