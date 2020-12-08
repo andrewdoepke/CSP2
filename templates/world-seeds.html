@@ -1,0 +1,64 @@
+{% extends "template.html" %}
+
+{% block localcss %}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/admin.css')}}">
+{% endblock %}
+
+{% block content %}
+    <!-- Main Body of Page -->
+		<div class = "main">
+			<div id = "create-world-seed">
+				<a href="new-world-seed.html"><center><input type="button" value = "Add a World Seed" id = "new-seed"></center></a>
+            </div>
+            <div class = "list-world-seeds">
+                    <table class="listings">
+	       			<!-- {% for movie_key, movie in movies %} -->
+	        		<tr>
+	          			<td>
+				            <!-- {% if current_user.is_admin %} -->
+				            <label class="checkbox">
+				              <input type="checkbox" class = "check-box-input" name="seed-desc" /> <!--value="{{ movie_key }}" -->
+				            </label>
+				            <!-- {% endif %} -->
+				            <!--<a href="{{ url_for('movie_page', movie_key=movie_key) }}">
+				              {{ movie.title }}
+				              {% if movie.year %} ({{ movie.year }}) {% endif %}
+				            </a> -->
+							<label>World Description (placeholder 1)</label>
+				        </td>
+	       			</tr>
+	        <!-- {% endfor %} --> <!-- Here would be the end of the table for the add from .... just copy and pasting for styling -->
+					<!-- Delete from here down to </table> as this is not needed, simply a placeholder -->
+					<tr>
+	          			<td>
+				            <!-- {% if current_user.is_admin %} -->
+				            <label class="checkbox">
+				              <input type="checkbox" class = "check-box-input" name="seed-desc" /> <!--value="{{ movie_key }}" -->
+				            </label>
+				            <!-- {% endif %} -->
+				            <!--<a href="{{ url_for('movie_page', movie_key=movie_key) }}">
+				              {{ movie.title }}
+				              {% if movie.year %} ({{ movie.year }}) {% endif %}
+				            </a> -->
+							<label>World Description (placeholder 2)</label>
+				        </td>
+	       			</tr>
+					<tr>
+	          			<td>
+				            <!-- {% if current_user.is_admin %} -->
+				            <label class="checkbox">
+				              <input type="checkbox" class = "check-box-input" name="seed-desc" /> <!--value="{{ movie_key }}" -->
+				            </label>
+				            <!-- {% endif %} -->
+				            <!--<a href="{{ url_for('movie_page', movie_key=movie_key) }}">
+				              {{ movie.title }}
+				              {% if movie.year %} ({{ movie.year }}) {% endif %}
+				            </a> -->
+							<label>World Description (placeholder 3)</label>
+				        </td>
+	       			</tr>
+	    		</table>
+            </div>
+			<a href="#to-get-mc-top"><h3 class="to-top">Back to Top</h3></a>
+		</div>
+{% endblock %}

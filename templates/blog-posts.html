@@ -1,0 +1,65 @@
+{% extends "template.html" %}
+
+{% block localcss %}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/blog-posts-hub_style.css')}}">
+{% endblock %}
+
+{% block content %}
+    <!-- Main Body of Page -->
+		<div class = "main">
+			<div id = "make-blog-post">
+				<a href="new-blog-post.html"><center><input type="button" value = "Create a Post" id = "new-post"></center></a>
+	    	</div>
+			<div class = "list-blog-posts">
+				<table class="listings">
+	       			<!-- {% for movie_key, movie in movies %} -->
+	        		<tr>
+	          			<td>
+				            <!-- {% if current_user.is_admin %} -->
+				            <label class="checkbox">
+				              <input type="checkbox" class = "check-box-input" name="blog-title" /> <!--value="{{ movie_key }}" -->
+				            </label>
+				            <!-- {% endif %} -->
+				            <!--<a href="{{ url_for('movie_page', movie_key=movie_key) }}">
+				              {{ movie.title }}
+				              {% if movie.year %} ({{ movie.year }}) {% endif %}
+				            </a> -->
+				<!-- This is an example linking to the 'blog post' -->
+							<label><a href="blog-post.html">Title of Post (placeholder 1)</a></label>
+				        </td>
+	       			</tr>
+	        <!-- {% endfor %} --> <!-- Here would be the end of the table for the add from .... just copy and pasting for styling -->
+					<!-- Delete from here down to </table> as this is not needed, simply a placeholder -->
+					<tr>
+	          			<td>
+				            <!-- {% if current_user.is_admin %} -->
+				            <label class="checkbox">
+				              <input type="checkbox" class = "check-box-input" name="blog-title" /> <!--value="{{ movie_key }}" -->
+				            </label>
+				            <!-- {% endif %} -->
+				            <!--<a href="{{ url_for('movie_page', movie_key=movie_key) }}">
+				              {{ movie.title }}
+				              {% if movie.year %} ({{ movie.year }}) {% endif %}
+				            </a> -->
+							<label>Title of Post (placeholder 2)</label>
+				        </td>
+	       			</tr>
+					<tr>
+	          			<td>
+				            <!-- {% if current_user.is_admin %} -->
+				            <label class="checkbox">
+				              <input type="checkbox" class = "check-box-input" name="blog-title" /> <!--value="{{ movie_key }}" -->
+				            </label>
+				            <!-- {% endif %} -->
+				            <!--<a href="{{ url_for('movie_page', movie_key=movie_key) }}">
+				              {{ movie.title }}
+				              {% if movie.year %} ({{ movie.year }}) {% endif %}
+				            </a> -->
+							<label>Title of Post (placeholder 3)</label>
+				        </td>
+	       			</tr>
+	    		</table>
+	    	</div>
+			<a href="#to-get-mc-top"><h3 class="to-top">Back to Top</h3></a>
+		</div>
+{% endblock %}

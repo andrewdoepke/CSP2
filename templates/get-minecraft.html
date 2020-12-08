@@ -1,0 +1,78 @@
+{% extends "template.html" %}
+
+{% block localcss %}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/get-mc_style.css')}}">
+{% endblock %}
+
+{% block content %}
+    <!-- Main Body of Page -->
+		<div class = "main">
+			<!-- The 3 pictures at the top -->
+			<div class = "display-download-options">
+				<a href="#purchase-download">
+					<div class = "option-selection" id = "computer">
+						<img src="images/computer.png" alt="computer">
+					</div>
+				</a>
+				<a href="#purchase-download">
+					<div class = "option-selection" id = "mobile">
+						<img src="images/phone.png" alt="Mobile">
+					</div>
+				</a>
+				<a href="#purchase-download">
+					<div class = "option-selection" id = "console">
+						<img src="images/console.png" alt="Gaming Console">
+					</div>
+				</a>
+			</div>
+			<br>
+
+			<a name="purchase-download"></a>
+			<div class = "selection-displayed">
+				<div class = "purchase-where">
+					<h2>Where to purchase/download</h2>
+					<p>In this section, we will a different display that is determined by the above option chosen that will display
+						where the user can download. For example, for mobile devices, the user will be directed to the app
+						store where they can download. Javascript will allow hiding and showing content based on
+						ID dependent on which icon is clicked.</p>
+					<p>An additional option that will occur is once the user chooses an option, it will jump to the
+					"Where to purchase/download" section so when the user is in a small display, they will not need to
+						scroll. [<i>these paragraphs are just to explain what will be added later, the
+							bullets will be displayed</i>]</p>
+					<ul id="moblist">
+						<li>Mobile - iOS:
+							<a href = "https://itunes.apple.com/app/minecraft-pocket-edition/id479516143?mt=8" target="_blank">Link</a></li>
+						<li>Mobile - Android:
+							<a href = "https://play.google.com/store/apps/details?id=com.mojang.minecraftpe" target="_blank">Link</a></li>
+					</ul>
+
+					<ul id="comlist">
+						<li>Computer - Windows/Mac OS/Linux:
+							<a href = "https://www.minecraft.net/en-us/store/minecraft-java-edition" target="_blank">Link</a></li>
+						<li>Computer - Windows 10:
+							<a href = "https://www.minecraft.net/en-us/store/minecraft-windows10" target="_blank">Link</a></li>
+					</ul>
+
+					<ul id="conlist">
+						<li>Game Console - Nintendo Switch:
+							<a href = "https://www.nintendo.com/games/detail/minecraft-switch/" target="_blank">Link</a></li>
+						<li>Game Console - Playstation:
+							<a href = "https://store.playstation.com/en-us/product/UP4433-CUSA00744_00-MINECRAFTPS40001" target="_blank">Link</a></li>
+						<li>Game Console - Xbox:
+							<a href = "https://www.minecraft.net/en-us/store/minecraft-xbox-one" target="_blank">Link</a></li>
+					</ul>
+				</div>
+				<div class="download-where">
+					<h2>Steps to Download:</h2>
+					<ol>
+						<li>Click the above link, according to which device you have</li>
+						<li>Purchase the game if you haven't already</li>
+						<li>Download the game</li>
+						<li>Enjoy!</li>
+					</ol>
+				</div>
+			</div>
+			<!-- anchor to top, need to not display when selection not chosen -->
+			<a href="#to-get-mc-top"><h3 class="to-top">Back to Top</h3></a>
+		</div>
+{% endblock %}
