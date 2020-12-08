@@ -1,16 +1,12 @@
 {% extends "template.html" %}
 
-{% block localcss %}
-    <link rel="stylesheet" href="{{url_for('static', filename='css/admin.css')}}">
-{% endblock %}
-
 {% block content %}
     <!-- Main Body of Page -->
 		<div class = "main">
-			<h1>Seed #: 2084759484</h1> <!-- {{ blog.title }} -->
+			<h1>Seed #: 2084759484</h1>
 			<p><b>Tags:</b> tag1, tag2, tag3</p>
 			<p>This would be where the seed description displays.</p>
-			<a href="world-seeds.html"><center><input type="button" value = "All Seeds" id = "all-seeds"></center></a>
+			<a href="/worldseed"><center><input type="button" value = "All Seeds" id = "all-seeds"></center></a>
 			<br><br>
 		</div>
 {% endblock %}

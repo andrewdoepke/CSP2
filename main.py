@@ -24,6 +24,11 @@ def newblog():
     return render_template('new-blog-post.html', title="New Post", header="New Post")
 
 
+@app.route('/viewpost', methods=['GET', 'POST'])
+def viewblog():
+    return render_template('blog-post.html', title="View Post", header="Blog Post")
+
+
 @app.route('/worldseed', methods=['GET', 'POST'])
 def ws():
     return render_template('world-seeds.html', title="World Seeds", header="World Seeds")
@@ -32,6 +37,11 @@ def ws():
 @app.route('/newseed', methods=['GET', 'POST'])
 def newworldseed():
     return render_template('new-world-seed.html', title="New Seed", header="New Seed")
+
+
+@app.route('/viewseed', methods=['GET', 'POST'])
+def viewws():
+    return render_template('world-seed.html', title="View Seed", header="View Seed")
 
 
 @app.route('/buildideas', methods=['GET', 'POST'])
