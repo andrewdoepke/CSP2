@@ -7,37 +7,35 @@
 		{% block localcss %} {% endblock %}
 	</head>
 	<body>
+		<div id="contain">
 
-
-	<div id="contain">
-	<a name="to-top"></a>
-	<div class="stickysticky">
-<!-- Banner at Head of Webpage -->
-		<div class = "header">{{ header }}</div>
-<!-- Navigation Bar -->
-		<div class = "navigation">
-			<a href="/home">Home</a>
-			<a href="/getmc">Get Minecraft</a>
-			<a href="/blogpost">Blog Posts</a>
-			<a href="/worldseed">World Seeds</a>
-			<a href="/buildideas">Build Ideas</a>
-			<a href="/adminlogin">Login</a>
-		</div>
-	</div>
-
-    {% block content %}
-    {% endblock %}
-
-    <div class = "footer">
-			<div class = "footer-contact-info">
-				<h3>Check out the official Minecraft social media for more</h3>
-				<a href="https://www.instagram.com/minecraft/" target="_blank"><img alt="Instagram logo" src="{{url_for('static', filename='images/instagram-logo.png')}}" class = "social-media-links"></a>
-				<a href="https://twitter.com/Minecraft" target="_blank"><img alt="Twitter logo" src="{{url_for('static', filename='images/twitter-logo.png')}}" class = "social-media-links"></a>
-				<a href="https://www.youtube.com/Minecraft" target="_blank"><img alt="YouTube logo" src="{{url_for('static', filename='images/youtube-logo.png')}}" class = "social-media-links"></a>
-				<a href="https://www.facebook.com/minecraft/" target="_blank"><img alt="Facebook logo" src="{{url_for('static', filename='images/facebook-logo.png')}}" class = "social-media-links"></a>
+			<a name="to-top"></a>
+			<div class="stickysticky">
+		<!-- Banner at Head of Webpage -->
+				<div class = "header">{{ header }}</div>
+		<!-- Navigation Bar -->
+				<div class = "navigation">
+					<a href="/home">Home</a>
+					<a href="/getmc">Get Minecraft</a>
+					<a href="/blogpost">Blog Posts</a>
+					<a href="/worldseed">World Seeds</a>
+					<a href="/buildideas">Build Ideas</a>
+					<a href="/adminlogin">Login</a>
+				</div>
 			</div>
-	</div>
 
-	</div>
+			{% block content %}
+			{% endblock %}
+
+			<div class = "footer">
+				<div class = "footer-contact-info">
+					<h3>Check out the official Minecraft social media for more</h3>
+					<a href="https://www.instagram.com/minecraft/" target="_blank"><img alt="Instagram logo" src="{{url_for('static', filename='images/instagram-logo.png')}}" class = "social-media-links"></a>
+					<a href="https://twitter.com/Minecraft" target="_blank"><img alt="Twitter logo" src="{{url_for('static', filename='images/twitter-logo.png')}}" class = "social-media-links"></a>
+					<a href="https://www.youtube.com/Minecraft" target="_blank"><img alt="YouTube logo" src="{{url_for('static', filename='images/youtube-logo.png')}}" class = "social-media-links"></a>
+					<a href="https://www.facebook.com/minecraft/" target="_blank"><img alt="Facebook logo" src="{{url_for('static', filename='images/facebook-logo.png')}}" class = "social-media-links"></a>
+				</div>
+			</div>
+		</div>
     </body>
 </html>

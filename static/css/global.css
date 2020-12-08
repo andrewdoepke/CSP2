@@ -64,7 +64,8 @@
 }
 
 .main {
-	margin: 0;
+   padding:10px;
+   padding-bottom:100px;
 }
 
 /* ------------------------------------------------------------------------ */
@@ -110,28 +111,26 @@
 
 /* ------------------------------------------------------------------------ */
 
-html{
+html, body{
     height: 100%;
     margin:0;
     padding:0;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
     background-color: #006600;
 }
 
-#contain {
+#contain{
    min-height:100%;
    position:relative;
 }
 
 .footer {
-    position: absolute;
+    position:absolute;
     bottom:0;
     width:100%;
+    height:100px;
 	display: flex;
 	flex-direction: row;
 	background-color: #404040;
