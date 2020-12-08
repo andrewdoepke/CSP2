@@ -41,7 +41,7 @@ def bi():
 
 @app.route('/buildform', methods=['GET', 'POST'])
 def biform():
-    return render_template('buildideaform.html', title="Build Ideas")
+    return render_template('buildideaform.html', title="Submit an Idea", header="Submit a Build Idea")
 
 
 @app.route('/adminlogin', methods=['GET', 'POST'])
