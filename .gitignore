@@ -4,6 +4,9 @@ constants.py
 #dsstore
 .DS_Store
 
+#conf
+pyvenv.cfg
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
