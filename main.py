@@ -17,9 +17,21 @@ def getmc():
     return render_template('get-minecraft.html', title="Get Minecraft", header="Get Minecraft")
 
 
+# noinspection PyBroadException
 @app.route('/blogpost', methods=['GET', 'POST'])
 def blog():
-    return render_template('blog-posts.html', title="Blog Posts", header="Blog Posts")
+    try:
+        with sql.connect("static/database/database.db") as conn:
+            curr = conn.cursor()
+            conn.row_factory = sql.Row
+
+            curr.execute("SELECT * FROM blogs;")
+            hi = curr.fetchall()
+    except:
+        print("OH No")
+    finally:
+        return render_template('blog-posts.html', title="Blog Posts", header="Minecraft Blog", posts=list(hi))
+        conn.close()
 
 
 @app.route('/newpost', methods=['GET', 'POST'])
@@ -27,9 +39,20 @@ def newblog():
     return render_template('new-blog-post.html', title="New Post", header="New Post")
 
 
-@app.route('/viewpost', methods=['GET', 'POST'])
-def viewblog():
-    return render_template('blog-post.html', title="View Post", header="Blog Post")
+@app.route('/viewpost/<posti>', methods=['GET', 'POST'])
+def viewblog(posti):
+    try:
+        with sql.connect("static/database/database.db") as conn:
+            curr = conn.cursor()
+            conn.row_factory = sql.Row
+            curr.execute("SELECT subject, body FROM blogs WHERE blogid == ?;", posti)
+            hi = curr.fetchone()
+
+            curr.execute("SELECT * FROM comments WHERE blogid == ?", posti)
+            com = curr.fetchall()
+    finally:
+        return render_template('blog-post.html', title="Blog Posts", header="Minecraft Blog", post=hi, comments=list(com))
+        conn.close()
 
 
 @app.route('/worldseed', methods=['GET', 'POST'])
@@ -77,28 +100,13 @@ def addblog():
             with sql.connect("static/database/database.db") as con:
                 cur = con.cursor()
 
-                cur.execute("INSERT INTO blogs VALUES(?, ?);", (title, body))
+                cur.execute("INSERT INTO blogs (subject, body) VALUES(?, ?);", (title, body))
 
                 con.commit()
                 print("Record successfully added")
         finally:
             con.close()
             return redirect("/blogpost")
-
-    @app.route('/getblod', methods=['GET'])
-    def getblogs():
-        try:
-            with sql.connect("static/database/database.db") as conn:
-                curr = conn.cursor()
-                conn.row_factory = sql.Row
-
-                curr.execute("GET * FROM blogs;")
-                hi = cur.fetchall()
-
-                print(list(hi).__getitem__(0))
-        finally:
-            con.close()
-            return list(hi)
 
 
 if __name__ == "__main__":

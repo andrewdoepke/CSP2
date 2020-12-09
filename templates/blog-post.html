@@ -7,11 +7,14 @@
 {% block content %}
     <!-- Main Body of Page -->
 		<div class = "main">
-			<h1>Title</h1>
-			<p>This is a sample blog post and the contents of the submitted post. In each blog post,
-				there will be a title, and a body paragraph created from the user.
-				Only the admin after logging in will be able to delete blog posts from the main blog post page.</p>
-			<a href="/blogpost"><center><input type="button" value = "All Posts" id = "all-posts"></center></a>
-			<br><br>
+
+			<div id="display">
+				<h1 id="subject">{{ post[0] }}</h1>
+				<p id="body">{{ post[1] }}</p>
+			</div>
+
+			<div id="comments">
+
+			</div>
 		</div>
 {% endblock %}

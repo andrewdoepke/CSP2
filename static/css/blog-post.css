@@ -1,3 +1,11 @@
-.main > h1 {
-    margin-bottom: 10px;
+#subject, #body {
+    text-align: center;
 }
+
+#subject {
+    font-size: 3em;
+}
+
+
+
+

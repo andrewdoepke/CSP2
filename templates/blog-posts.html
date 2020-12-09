@@ -2,7 +2,6 @@
 
 {% block localcss %}
     <link rel="stylesheet" href="{{url_for('static', filename='css/blog-posts-hub_style.css')}}">
-	<script type="text/javascript" src="{{url_for('static', filename='scripts/getposts.js')}}"></script>
 {% endblock %}
 
 {% block content %}
@@ -13,30 +12,16 @@
 	    	</div>
 			<div class = "list-blog-posts">
 				<table class="listings">
-	        		<tr>
-	          			<td>
-				            <label class="checkbox">
-				              <input type="checkbox" class = "check-box-input" name="blog-title" /> <!--value="{{ movie_key }}" -->
-				            </label>
-							<label>Title of Post (placeholder 1)</label>
-				        </td>
-	       			</tr>
-					<tr>
-	          			<td>
-				            <label class="checkbox">
-				              <input type="checkbox" class = "check-box-input" name="blog-title" /> <!--value="{{ movie_key }}" -->
-				            </label>
-							<label>Title of Post (placeholder 2)</label>
-				        </td>
-	       			</tr>
-					<tr>
-	          			<td>
-				            <label class="checkbox">
-				              <input type="checkbox" class = "check-box-input" name="blog-title" /> <!--value="{{ movie_key }}" -->
-				            </label>
-							<label>Title of Post (placeholder 3)</label>
-				        </td>
-	       			</tr>
+					{% for row in posts %}
+						<tr>
+							<td>
+								<label class="checkbox">
+								  <input type="checkbox" class = "check-box-input" name="blog-title" />
+								</label>
+								<label><a href="/viewpost/{{ row[0] }}">{{ row[1] }}</a></label>
+							</td>
+						</tr>
+					{% endfor %}
 	    		</table>
 	    	</div>
 			<a href="#to-top"><h3 class="to-top">Back to Top</h3></a>
