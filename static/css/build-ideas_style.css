@@ -73,13 +73,14 @@ I honestly don't understand what is happening but it pisses me off.
 
 /* ---------------------------------------------------------------------- */
 
-.card-image {
+.card-image{
     order: 1;
     height: 200px;
     width: 100%;
     box-sizing: border-box;
     border-radius: 5px 5px 0px 0px;
 }
+
 
 #house {
     object-fit: cover;

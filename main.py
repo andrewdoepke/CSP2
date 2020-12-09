@@ -55,6 +55,24 @@ def viewblog(posti):
         conn.close()
 
 
+@app.route('/comment/<posti>', methods=['GET', 'POST'])
+def comment(posti):
+    if request.method == 'POST':
+        try:
+            commen = request.form['comment']
+
+            with sql.connect("static/database/database.db") as con:
+                cur = con.cursor()
+
+                cur.execute("INSERT INTO comments (blogid, comment) VALUES(?, ?);", (posti, commen))
+
+                con.commit()
+                print("Record successfully added")
+        finally:
+            con.close()
+            return redirect("/viewpost/posti")
+
+
 @app.route('/worldseed', methods=['GET', 'POST'])
 def ws():
     return render_template('world-seeds.html', title="World Seeds", header="World Seeds")
