@@ -1,4 +1,7 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
+import sqlite3 as sql
+
+from werkzeug.utils import redirect
 
 app = Flask(__name__)
 
@@ -62,6 +65,40 @@ def login():
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html', title="Oops!", header="Oh No!"), 404
+
+
+@app.route('/addblog', methods=['POST', 'GET'])
+def addblog():
+    if request.method == 'POST':
+        try:
+            title = request.form['subject']
+            body = request.form['body']
+
+            with sql.connect("static/database/database.db") as con:
+                cur = con.cursor()
+
+                cur.execute("INSERT INTO blogs VALUES(?, ?);", (title, body))
+
+                con.commit()
+                print("Record successfully added")
+        finally:
+            con.close()
+            return redirect("/blogpost")
+
+    @app.route('/getblod', methods=['GET'])
+    def getblogs():
+        try:
+            with sql.connect("static/database/database.db") as conn:
+                curr = conn.cursor()
+                conn.row_factory = sql.Row
+
+                curr.execute("GET * FROM blogs;")
+                hi = cur.fetchall()
+
+                print(list(hi).__getitem__(0))
+        finally:
+            con.close()
+            return list(hi)
 
 
 if __name__ == "__main__":
