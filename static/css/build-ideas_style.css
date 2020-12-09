@@ -20,37 +20,41 @@
     margin-bottom: 20px;
 }
 
+/*
+Everything in this commented out section is the exact same as the style css in the .html
+I honestly don't understand what is happening but it pisses me off.
+
 .card-container {
-  background-color: transparent;
-  width: 200px;
-  height: 300px;
-  box-sizing: border-box;
-  perspective: 1000px;
-  margin: 5px;
-  border-radius: 5px;
+    background-color: transparent;
+    width: 200px;
+    height: 300px;
+    box-sizing: border-box;
+    perspective: 1000px;
+    margin: 5px;
+    border-radius: 5px;
 }
 
 .flip-card-content {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
 .card-container:hover .flip-card-content {
-  transform: rotateY(180deg);
+    transform: rotateY(180deg);
 }
 
 .card-front, .card-back {
-  background-color: #bbb;
-  border-style: solid;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
+    background-color: #bbb;
+    border-style: solid;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 }
 
 .card-front {
@@ -58,9 +62,14 @@
 }
 
 .card-back {
-  padding: 5px;
-  transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    align-content: flex-end;
+    transform: rotateY(180deg);
+    padding-bottom: 10px;
 }
+
+*/
 
 /* ---------------------------------------------------------------------- */
 
@@ -119,13 +128,12 @@
 }
 
 .build-material {
-    height: 250px;
+    height: 200px;
 }
 
 .feedback {
     display: flex;
     justify-content: space-around;
-    align-content: flex-end;
 }
 
 /* @Karen likes this look better where the cards all stay the same display size
