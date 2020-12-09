@@ -9,31 +9,29 @@
 		<div class = "main">
 
 			<div id="display">
-				<h1 id="subject">{{ post[0] }}</h1>
-				<p id="body">{{ post[1] }}</p>
+				<h1 id="subject">{{ post[1] }}</h1>
+				<p id="body">{{ post[2] }}</p>
 			</div>
 
 			<div id="comments">
-				<form>
+				<form id="commentform">
 					<h1>Comments</h1>
-					<input type="text" style="width: 50%;" name="comment">
-					<input type="submit" formaction='/comment/{{  }}' formmethod="post" value="Comment">
+					<input type="text"  name="myname" placeholder="Your Name" required>
+					<input type="text"  name="comment" placeholder="Your Comment" required>
+					<input id="commentbutton" type="submit" formaction='/comment/{{ post[0] }}' formmethod="post" value="Comment">
 				</form>
 
 				<div id = "list-comments">
-				<table>
-					{% for row in comments %}
-						<tr>
-							<td>
-								<label class="checkbox">
-								  <input type="checkbox" class = "check-box-input" name="blog-title" />
-								</label>
-								<label>{{ row[2] }}</label>
-							</td>
-						</tr>
-					{% endfor %}
-	    		</table>
-	    	</div>
+					<table>
+						{% for row in comments %}
+							<tr>
+								<td>
+									<p>{{ row[2] }} - {{ row[3] }}</p>
+								</td>
+							</tr>
+						{% endfor %}
+					</table>
+	    		</div>
 			</div>
 		</div>
 {% endblock %}

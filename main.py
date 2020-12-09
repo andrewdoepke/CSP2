@@ -5,6 +5,18 @@ from werkzeug.utils import redirect
 
 app = Flask(__name__)
 
+database = "static/database/database.db"
+
+keep_database = 0
+# if you set this to 1, it keeps the database. Use this for testing but for Github sake right now,
+# keep this at 0 so it clears the database before running. This will prevent duplicates if you need it
+
+if keep_database != 1:
+    with sql.connect(database) as conn:
+        curr = conn.cursor()
+        curr.execute("DELETE FROM comments")
+        curr.execute("DELETE FROM blogs")
+
 
 @app.route('/')
 @app.route('/home')
@@ -21,7 +33,7 @@ def getmc():
 @app.route('/blogpost', methods=['GET', 'POST'])
 def blog():
     try:
-        with sql.connect("static/database/database.db") as conn:
+        with sql.connect(database) as conn:
             curr = conn.cursor()
             conn.row_factory = sql.Row
 
@@ -42,10 +54,10 @@ def newblog():
 @app.route('/viewpost/<posti>', methods=['GET', 'POST'])
 def viewblog(posti):
     try:
-        with sql.connect("static/database/database.db") as conn:
+        with sql.connect(database) as conn:
             curr = conn.cursor()
             conn.row_factory = sql.Row
-            curr.execute("SELECT subject, body FROM blogs WHERE blogid == ?;", posti)
+            curr.execute("SELECT * FROM blogs WHERE blogid == ?;", posti)
             hi = curr.fetchone()
 
             curr.execute("SELECT * FROM comments WHERE blogid == ?", posti)
@@ -60,17 +72,18 @@ def comment(posti):
     if request.method == 'POST':
         try:
             commen = request.form['comment']
+            myname = request.form['myname']
 
-            with sql.connect("static/database/database.db") as con:
+            with sql.connect(database) as con:
                 cur = con.cursor()
 
-                cur.execute("INSERT INTO comments (blogid, comment) VALUES(?, ?);", (posti, commen))
+                cur.execute("INSERT INTO comments (blogid, comment, name) VALUES(?, ?, ?);", (posti, commen, myname))
 
                 con.commit()
                 print("Record successfully added")
         finally:
             con.close()
-            return redirect("/viewpost/posti")
+            return redirect('/viewpost/%s' % posti)
 
 
 @app.route('/worldseed', methods=['GET', 'POST'])
@@ -115,7 +128,7 @@ def addblog():
             title = request.form['subject']
             body = request.form['body']
 
-            with sql.connect("static/database/database.db") as con:
+            with sql.connect(database) as con:
                 cur = con.cursor()
 
                 cur.execute("INSERT INTO blogs (subject, body) VALUES(?, ?);", (title, body))
