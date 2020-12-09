@@ -16,6 +16,9 @@ if keep_database != 1:
         curr = conn.cursor()
         curr.execute("DELETE FROM comments")
         curr.execute("DELETE FROM blogs")
+        curr.execute("UPDATE blogs SET blogid=0")
+        curr.execute("UPDATE comments SET commid=0")
+
 
 
 @app.route('/')
