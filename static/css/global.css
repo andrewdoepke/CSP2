@@ -1,6 +1,7 @@
 .stickysticky {
     position: sticky;
     top: 0;
+    z-index: 3;
 }
 
 .to-top {
@@ -66,6 +67,7 @@
 .main {
    padding:10px;
    padding-bottom:100px;
+   z-index: 2;
 }
 
 /* ------------------------------------------------------------------------ */
