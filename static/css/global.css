@@ -6,7 +6,7 @@
 
 .to-top {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 .header {
@@ -132,7 +132,7 @@ body {
     position:absolute;
     bottom:0;
     width:100%;
-    height:100px;
+    height:120px;
 	display: flex;
 	flex-direction: row;
 	background-color: #404040;
