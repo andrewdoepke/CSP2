@@ -12,7 +12,7 @@
 .header {
 	padding: 20px;
 	text-align: center;
-	background-color: #404040;
+	background-color: #264d00;
 	color: white;
 	font-family: Optima, Didot;
 	font-size: 48px;
@@ -23,7 +23,7 @@
 .navigation {
 	display: flex;
 	justify-content: center;
-	background-color: #003300;
+	background-color: #4e2c18;
 }
 
 .navigation a {
@@ -34,7 +34,7 @@
 }
 
 .navigation a:hover {
-	background-color: #008000;
+	background-color: #754224;
 }
 
 /* ------------------------------------------------------------------------ */
@@ -120,7 +120,7 @@ html, body{
 }
 
 body {
-    background-color: #006600;
+    background-color: #477A1E; /* #006600 */
 }
 
 #contain{
@@ -135,7 +135,8 @@ body {
     height:120px;
 	display: flex;
 	flex-direction: row;
-	background-color: #404040;
+	background-color: #264d00; /* #404040 */
+	color: white;
 }
 
 a {
@@ -177,7 +178,7 @@ td {
 }
 
 td:hover {
-    background-color: #00802b;
+    background-color: #70B237;
 }
 
 /* ------------------------------------------------------------------------ */
