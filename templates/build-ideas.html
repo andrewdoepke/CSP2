@@ -10,7 +10,6 @@
     box-sizing: border-box;
     perspective: 1000px;
     margin: 5px;
-    border-radius: 5px;
 }
 
 .flip-card-content {
@@ -29,6 +28,8 @@
 .card-front, .card-back {
     background-color: #bbb;
     border-style: solid;
+    border-radius: 10px;
+    box-sizing: border-box;
     position: absolute;
     width: 100%;
     height: 100%;
@@ -55,7 +56,7 @@
     <!-- Main Body of Page -->
 		<div class = "main">
 			<div id="haveidea">
-				<h2>Have a build idea? <a href="/buildform">Tell us.</a></h2>
+				<h1>Have a build idea?</h1><a href="/buildform"><input type="button" value = "Tell Us." id = "build-idea-button"></a>
 <!-- delete this and lines below when done -->
 				<p>Andrew! Delete all this text when you're done but this is what i was using to help
 					me with the cards if this helps you: <br>

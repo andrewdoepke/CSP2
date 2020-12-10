@@ -3,12 +3,14 @@
     margin-bottom: 10px;
 }
 
+/*
 #haveidea a {
     border: 2px solid black;
     border-radius: 5px;
     background-color: green;
     padding: 2px;
 }
+*/
 
 /* -------------------- Flip Card ---------------------- */
 
@@ -78,7 +80,6 @@ I honestly don't understand what is happening but it pisses me off.
     height: 200px;
     width: 100%;
     box-sizing: border-box;
-    border-radius: 5px 5px 0px 0px;
 }
 
 
@@ -134,6 +135,7 @@ I honestly don't understand what is happening but it pisses me off.
 
 .feedback {
     display: flex;
+    align-self: flex-end;
     justify-content: space-around;
 }
 
