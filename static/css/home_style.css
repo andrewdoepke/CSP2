@@ -21,9 +21,8 @@
 #get-mc-button-np {
     text-align: left;
 	width: 20%;
-	padding: 15px;
+	padding: 10px;
 }
-
 
 #link-get-mc {
 	font-family: Didot;
@@ -65,11 +64,21 @@
 
 @media (max-width: 49.9375em) {
       #get-mc-home-img{
-        margin-left: -1%;
+        width: 100%;
+        margin-left: -0.5%;
        }
 
     .main div{
         margin-bottom: 1vh;
+    }
+
+    .get-mc {
+        flex-direction: column;
+    }
+
+    #get-mc-button-np {
+        width: 100%;
+        padding: 0px;
     }
 }
 
