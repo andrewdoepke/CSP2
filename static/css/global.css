@@ -70,6 +70,16 @@
    z-index: 2;
 }
 
+.link-buttons {
+    background-color: #af8c6a;
+    /* add a border */
+}
+
+.link-buttons:hover {
+    background-color: #c1a68b;          /* change this */
+    /* not sure if i need to add anything here */
+}
+
 /* ------------------------------------------------------------------------ */
 /* Navigation Bar Responsive */
 @media screen and (max-width: 700px) {
