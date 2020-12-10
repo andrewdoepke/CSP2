@@ -7,9 +7,12 @@
 {% block content %}
     <!-- Main Body of Page -->
 		<div class = "main">
-			<div id = "make-blog-post">
-				<a href="/newpost"><center><input type="button" value = "Create a Post" id = "new-post"></center></a>
+			<center>
+			<div id = "blog-post-buttons">
+				<a href="/newpost"><input type="button" value = "Create a Post" id = "new-post"></a>
+				<input type="button" value = "Delete Post" id = "delete-post">
 	    	</div>
+			</center>
 			<div class = "list-blog-posts">
 				<table class="listings">
 					{% for row in posts %}
