@@ -122,11 +122,11 @@ I honestly don't understand what is happening but it pisses me off.
 
 .build-material {
     height: 200px;
+    flex-grow: 1;
 }
 
 .feedback {
     display: flex;
-    align-self: flex-end;
     justify-content: space-around;
 }
 
@@ -162,4 +162,9 @@ li {
 h1 {
     display: inline-block;
     display: inline;
+}
+
+.like, .dislike {
+    bottom: 0px;
+
 }
