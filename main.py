@@ -20,7 +20,6 @@ if keep_database != 1:
         curr.execute("UPDATE comments SET commid=0")
 
 
-
 @app.route('/')
 @app.route('/home')
 def main():
@@ -36,17 +35,16 @@ def getmc():
 @app.route('/blogpost', methods=['GET', 'POST'])
 def blog():
     try:
-        with sql.connect(database) as conn:
-            curr = conn.cursor()
-            conn.row_factory = sql.Row
+        with sql.connect(database) as con:
+            cur = con.cursor()
+            con.row_factory = sql.Row
 
-            curr.execute("SELECT * FROM blogs;")
-            hi = curr.fetchall()
+            cur.execute("SELECT * FROM blogs;")
+            hi = cur.fetchall()
     except:
         print("OH No")
     finally:
         return render_template('blog-posts.html', title="Blog Posts", header="Minecraft Blog", posts=list(hi))
-        conn.close()
 
 
 @app.route('/newpost', methods=['GET', 'POST'])
@@ -57,17 +55,15 @@ def newblog():
 @app.route('/viewpost/<posti>', methods=['GET', 'POST'])
 def viewblog(posti):
     try:
-        with sql.connect(database) as conn:
-            curr = conn.cursor()
-            conn.row_factory = sql.Row
-            curr.execute("SELECT * FROM blogs WHERE blogid == ?;", posti)
-            hi = curr.fetchone()
-
-            curr.execute("SELECT * FROM comments WHERE blogid == ?", posti)
-            com = curr.fetchall()
+        with sql.connect(database) as con:
+            curs = con.cursor()
+            con.row_factory = sql.Row
+            curs.execute("SELECT * FROM blogs WHERE blogid == ?;", [posti])
+            hi = curs.fetchone()
+            curs.execute("SELECT * FROM comments WHERE blogid == ?", [posti])
+            com = curs.fetchall()
     finally:
         return render_template('blog-post.html', title="Blog Posts", header="Minecraft Blog", post=hi, comments=list(com))
-        conn.close()
 
 
 @app.route('/comment/<posti>', methods=['GET', 'POST'])
@@ -80,7 +76,7 @@ def comment(posti):
             with sql.connect(database) as con:
                 cur = con.cursor()
 
-                cur.execute("INSERT INTO comments (blogid, comment, name) VALUES(?, ?, ?);", (posti, commen, myname))
+                cur.execute("INSERT INTO comments (blogid, comment, name) VALUES(?, ?, ?);", ([posti], commen, myname))
 
                 con.commit()
                 print("Record successfully added")
