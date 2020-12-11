@@ -17,4 +17,12 @@
 .tag-check-box {
     width: 20px;
     height: 20px;
+    background-color: #c1a68b;
+	border: 3px solid #af8c6a;
+	outline: none;
+}
+
+input[type="checkbox"] {
+    background-color: #c1a68b;
+	border: 3px solid #af8c6a;
 }

@@ -18,10 +18,6 @@
     margin-bottom: 20px;
 }
 
-/*
-Everything in this commented out section is the exact same as the style css in the .html
-I honestly don't understand what is happening but it pisses me off.
-
 .card-container {
     background-color: transparent;
     width: 200px;
@@ -29,7 +25,7 @@ I honestly don't understand what is happening but it pisses me off.
     box-sizing: border-box;
     perspective: 1000px;
     margin: 5px;
-    border-radius: 5px;
+
 }
 
 .flip-card-content {
@@ -39,6 +35,7 @@ I honestly don't understand what is happening but it pisses me off.
     transition: transform 0.6s;
     transform-style: preserve-3d;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 10px;
 }
 
 .card-container:hover .flip-card-content {
@@ -48,6 +45,8 @@ I honestly don't understand what is happening but it pisses me off.
 .card-front, .card-back {
     background-color: #bbb;
     border-style: solid;
+    border-radius: 10px;
+    box-sizing: border-box;
     position: absolute;
     width: 100%;
     height: 100%;
@@ -66,8 +65,6 @@ I honestly don't understand what is happening but it pisses me off.
     transform: rotateY(180deg);
     padding-bottom: 10px;
 }
-
-*/
 
 /* ---------------------------------------------------------------------- */
 
