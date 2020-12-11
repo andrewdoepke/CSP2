@@ -1,3 +1,5 @@
+import math
+
 from flask import Flask, render_template, request
 import sqlite3 as sql
 
@@ -188,9 +190,9 @@ def makecards():
                 if disl == 0:
                     ratios.append(100)
                 else:
-                    ratio = likes / (likes + disl)
-                    ratio = format(ratio, '.2f')
-                    ratios.append(ratio)
+                    ratio = likes / (likes + disl) * 100  # finds ratio
+                    ratio = (math.trunc(ratio))  # change ratio back into integer
+                    ratios.append(ratio)  # append ratio to be used when drawing the cards
     finally:
         con.close()
 
