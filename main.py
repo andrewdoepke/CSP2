@@ -18,6 +18,7 @@ if keep_database != 1:
         curr.execute("DELETE FROM blogs")
         curr.execute("UPDATE blogs SET blogid=0")
         curr.execute("UPDATE comments SET commid=0")
+        curr.execute("UPDATE Cards SET likes=0, dislikes=0")
 
 
 @app.route('/')
@@ -142,19 +143,57 @@ def addblog():
 
 
 class Card:
-    def __init__(self, frontcode, backcode, cid):
+    def __init__(self, frontcode, backcode, cid, ratio):
         self.frontcode = frontcode
         self.backcode = backcode
         self.cid = cid
-        ratio = 0;
+        self.ratio = ratio
 
 
-@app.route('/likedislike/<cardid>', methods=['POST', 'GET'])
-def likedislike(cardid):
-    redirect('/buildideas')
+@app.route('/like/<cardid>', methods=['POST', 'GET'])
+def like(cardid):
+    try:
+        with sql.connect(database) as con:
+            curs = con.cursor()
+            curs.execute("SELECT * FROM Cards WHERE cardid == ?", [cardid])
+            curs.execute("UPDATE Cards SET likes = likes + 1 WHERE cardid == ?", [cardid])
+    finally:
+        con.close()
+        return redirect('/buildideas')
+
+
+@app.route('/dislike/<cardid>', methods=['POST', 'GET'])
+def dislike(cardid):
+    try:
+        with sql.connect(database) as con:
+            curs = con.cursor()
+            curs.execute("SELECT * FROM Cards WHERE cardid == ?", [cardid])
+            curs.execute("UPDATE Cards SET dislikes = dislikes + 1 WHERE cardid == ?", [cardid])
+    finally:
+        con.close()
+        return redirect('/buildideas')
 
 
 def makecards():
+    try:
+        with sql.connect(database) as con:
+            cur = con.cursor()
+            con.row_factory = sql.Row
+            cur.execute("SELECT * FROM Cards")
+            hi = cur.fetchall()
+            ratios = []
+            for a in hi:
+                likes = a[1]
+                disl = a[2]
+                if disl == 0:
+                    ratios.append(100)
+                else:
+                    ratio = likes / (likes + disl)
+                    ratio = format(ratio, '.2f')
+                    ratios.append(ratio)
+    finally:
+        con.close()
+
     card0 = Card("""<div class = "card-image">
     <img class = "card-image" src = "/static/images/house-build.jpg" alt = "House Build" class = "build-img"  id = "house">
     </div>
@@ -172,7 +211,7 @@ def makecards():
                         <li>Birch Wood Slab</li>
                         <li>Oak Wood Slab</li>
                     </ul>
-                </div>""", 0)
+                </div>""", 0, ratios[0])
 
     card1 = Card("""<div class = "card-image">
                 <img class = "card-image" src = "/static/images/aquarium-build.jpg" alt = "Aquarium Build" class = "build-img" id = "aquarium">
@@ -191,7 +230,7 @@ def makecards():
                     <li>Coral (<i>Optional</i>)</li>
                     <li>Fish (<i>Optional</i>)</li>
                 </ul>
-            </div>""", 1)
+            </div>""", 1, ratios[1])
     card2 = Card("""<div class = "card-image">
                     <img class = "card-image" src = "/static/images/stable-build.jpg" alt = "Horse Stable Build" class = "build-img" id = "stable">
                 </div>
@@ -209,7 +248,7 @@ def makecards():
                         <li>Hay Bale</li>
                         <li>Spruce Fence Gate</li>
                     </ul>
-                </div>""", 2)
+                </div>""", 2, ratios[2])
     card3 = Card("""<div class = "card-image">
                     <img class = "card-image" src = "/static/images/boat-build.jpg" alt = "Boat Build" class = "build-img" id = "boat">
                 </div>
@@ -231,7 +270,7 @@ def makecards():
                     <li>Campfire</li>
                     <li>Water Bucket</li>
                 </ul>
-            </div>""", 3)
+            </div>""", 3, ratios[3])
 
     card4 = Card("""<div class = "card-image">
                     <img class = "card-image" src = "/static/images/nether-build.jpg" alt = "Nether Base Build" class = "build-img" id = "nether">
@@ -252,7 +291,7 @@ def makecards():
                         <li>Crimson Stem</li>
                         <li>Crimson Fence</li>
                     </ul>
-                </div>""", 4)
+                </div>""", 4, ratios[4])
 
     cards = [card0, card1, card2, card3, card4]
     return cards

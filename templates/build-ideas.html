@@ -80,14 +80,14 @@
     					<div class="card-front">
 							{{ val.frontcode|safe }}
 							<div class = "build-feedback-perc">
-                   				 {{ val.ratio }} like this
+								<b>{{ val.ratio }}% like this</b>
                				 </div>
     					</div>
     					<div class="card-back">
 							{{ val.backcode|safe }}
 							<div class = "feedback">
-								<input type="button" value = "Like" id = "like-build1" class="like" name="like" action="/likedislike/{{ val.cid|safe }}">
-								<input type="button" value = "Dislike" id = "dislike-build1" class="dislike" name="dislike" action="/likedislike/{{ val.cid|safe }}">
+								<input type="button" value = "Like" id = "like-build1" class="like" name="like" onclick="window.location.href='/like/{{ val.cid|safe }}'">
+								<input type="button" value = "Dislike" id = "dislike-build1" class="dislike" name="dislike" onclick="window.location.href='/dislike/{{ val.cid|safe }}'">
 							</div>
     					</div>
   					</div>
