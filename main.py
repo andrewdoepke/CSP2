@@ -76,7 +76,7 @@ def comment(posti):
             with sql.connect(database) as con:
                 cur = con.cursor()
 
-                cur.execute("INSERT INTO comments (blogid, comment, name) VALUES(?, ?, ?);", ([posti], commen, myname))
+                cur.execute("INSERT INTO comments (blogid, comment, name) VALUES(?, ?, ?);", (posti, commen, myname))
 
                 con.commit()
                 print("Record successfully added")
