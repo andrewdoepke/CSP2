@@ -74,193 +74,25 @@
 			</p>
 
 			<div class = "cards-container">
+				{% for val in cards %}
 				<div class="card-container">
   					<div class="flip-card-content">
     					<div class="card-front">
-      						<div class = "card-image">
-								<img class = "card-image" src = "{{url_for('static', filename='images/house-build.jpg')}}" alt = "House Build" class = "build-img"  id = "house">
-							</div>
-							<div class="card-description">
-								<h2 class = "text-desc">Starter House</h2>
-							</div>
+							{{ val.frontcode|safe }}
 							<div class = "build-feedback-perc">
-								75% like this
-							</div>
+                   				 {{ val.ratio }} like this
+               				 </div>
     					</div>
     					<div class="card-back">
-    						<div class = "build-material">
-								<a href = "https://youtu.be/jUmIeyMsYXE?t=34" target="_blank"><h3 class = "tutorial">Tutorial</h3></a>
-								<ul>
-									<li>Birch Wood Planks</li>
-									<li>Birch Fence</li>
-									<li>Glass Pane</li>
-									<li>Oak Door</li>
-									<li>Oak Wood Stairs</li>
-									<li>Birch Wood Slab</li>
-									<li>Oak Wood Slab</li>
-								</ul>
-							</div>
-
+							{{ val.backcode|safe }}
 							<div class = "feedback">
-								<input type="button" value = "Like" id = "like-build1" class="like">
-								<input type="button" value = "Dislike" id = "dislike-build1" class="dislike">
+								<input type="button" value = "Like" id = "like-build1" class="like" name="like" action="/likedislike/{{ val.cid|safe }}">
+								<input type="button" value = "Dislike" id = "dislike-build1" class="dislike" name="dislike" action="/likedislike/{{ val.cid|safe }}">
 							</div>
     					</div>
   					</div>
 				</div>
-
-
-
-				<div class="card-container">
-  					<div class="flip-card-content">
-    					<div class="card-front">
-      						<div class = "card-image">
-								<img class = "card-image" src = "{{url_for('static', filename='images/aquarium-build.jpg')}}" alt = "Aquarium Build" class = "build-img" id = "aquarium">
-							</div>
-							<div class="card-description">
-								<h2 class = "text-desc">Wall-less Aquarium</h2>
-							</div>
-							<div class = "build-feedback-perc">
-								80% like this
-							</div>
-    					</div>
-    					<div class="card-back">
-    						<div class = "build-material">
-								<a href = "https://youtu.be/wQI5lww6j9I" target="_blank"><h3 class = "tutorial">Tutorial</h3></a>
-								<ul>
-									<li>Water Bucket</li>
-									<li>Smooth Quartz Stairs</li>
-									<li>Glass</li>
-									<li>Kelp (<i>Optional</i>)</li>
-									<li>Sea Grass (<i>Optional</i>)</li>
-									<li>Coral (<i>Optional</i>)</li>
-									<li>Fish (<i>Optional</i>)</li>
-								</ul>
-							</div>
-
-							<div class = "feedback">
-								<input type="button" value = "Like" id = "like-build2" class="like">
-								<input type="button" value = "Dislike" id = "dislike-build2" class="dislike">
-							</div>
-    					</div>
-  					</div>
-				</div>
-
-
-
-				<div class="card-container">
-  					<div class="flip-card-content">
-    					<div class="card-front">
-      						<div class = "card-image">
-								<img class = "card-image" src = "{{url_for('static', filename='images/stable-build.jpg')}}" alt = "Horse Stable Build" class = "build-img" id = "stable">
-							</div>
-							<div class="card-description">
-								<h2 class = "text-desc">Horse Stable</h2>
-							</div>
-							<div class = "build-feedback-perc">
-								45% like this
-							</div>
-    					</div>
-    					<div class="card-back">
-    						<div class = "build-material">
-								<a href = "https://youtu.be/PPAa2T1pBto" target="_blank"><h3 class = "tutorial">Tutorial</h3></a>
-								<ul>
-									<li>Spruce Log</li>
-									<li>Dark Oak/Spruce Stairs</li>
-									<li>Dark Oak/Spruce Slab</li>
-									<li>Dark Oak/Spruce Fence</li>
-									<li>Lantern</li>
-									<li>Hay Bale</li>
-									<li>Spruce Fence Gate</li>
-								</ul>
-							</div>
-
-							<div class = "feedback">
-								<input type="button" value = "Like" id = "like-build3" class="like">
-								<input type="button" value = "Dislike" id = "dislike-build3" class="dislike">
-							</div>
-    					</div>
-  					</div>
-				</div>
-
-
-
-				<div class="card-container">
-  					<div class="flip-card-content">
-    					<div class="card-front">
-      						<div class = "card-image">
-								<img class = "card-image" src = "{{url_for('static', filename='images/boat-build.jpg')}}" alt = "Boat Build" class = "build-img" id = "boat">
-							</div>
-							<div class="card-description">
-								<h2 class = "text-desc">Boat House</h2>
-							</div>
-							<div class = "build-feedback-perc">
-								100% like this
-							</div>
-    					</div>
-    					<div class="card-back">
-    						<div class = "build-material">
-								<a href = "https://youtu.be/kNFsOqg7aUo" target="_blank"><h3 class = "tutorial">Tutorial</h3></a>
-								<ul>
-									<li>Spruce Trapdoor</li>
-									<li>Oak Trapdoor</li>
-									<li>Spruce Slab</li>
-									<li>Spruce Stairs</li>
-									<li>Spruce Fence</li>
-									<li>Spruce Fence Gate</li>
-									<li>Ladder</li>
-									<li>Oak Door</li>
-									<li>Stripped Spruce Log</li>
-									<li>Campfire</li>
-									<li>Water Bucket</li>
-								</ul>
-							</div>
-
-							<div class = "feedback">
-								<input type="button" value = "Like" id = "like-build4" class="like">
-								<input type="button" value = "Dislike" id = "dislike-build4" class="dislike">
-							</div>
-    					</div>
-  					</div>
-				</div>
-
-				<div class="card-container">
-  					<div class="flip-card-content">
-    					<div class="card-front">
-      						<div class = "card-image">
-								<img class = "card-image" src = "{{url_for('static', filename='images/nether-build.jpg')}}" alt = "Nether Base Build" class = "build-img" id = "nether">
-							</div>
-							<div class="card-description">
-								<h2 class = "text-desc">Nether Base</h2>
-							</div>
-							<div class = "build-feedback-perc">
-								95% like this
-							</div>
-    					</div>
-    					<div class="card-back">
-    						<div class = "build-material">
-								<a href = "https://youtu.be/3UndiBacPvw?t=314" target="_blank"><h3 class = "tutorial">Tutorial</h3></a>
-								<ul>
-									<li>Basalt</li>
-									<li>Nether Bricks</li>
-									<li>Nether Brick Stairs</li>
-									<li>Nether Brick Slab</li>
-									<li>Crimson Planks</li>
-									<li>Crimson Slab</li>
-									<li>Crimson Trapdoor</li>
-									<li>Crimson Stem</li>
-									<li>Crimson Fence</li>
-								</ul>
-							</div>
-
-							<div class = "feedback">
-								<input type="button" value = "Like" id = "like-build5" class="like">
-								<input type="button" value = "Dislike" id = "dislike-build5" class="dislike">
-							</div>
-    					</div>
-  					</div>
-				</div>
-
+				{% endfor %}
 			</div>
 
 

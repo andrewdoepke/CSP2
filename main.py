@@ -63,7 +63,8 @@ def viewblog(posti):
             curs.execute("SELECT * FROM comments WHERE blogid == ?", [posti])
             com = curs.fetchall()
     finally:
-        return render_template('blog-post.html', title="Blog Posts", header="Minecraft Blog", post=hi, comments=list(com))
+        return render_template('blog-post.html', title="Blog Posts", header="Minecraft Blog", post=hi,
+                               comments=list(com))
 
 
 @app.route('/comment/<posti>', methods=['GET', 'POST'])
@@ -102,7 +103,8 @@ def viewws():
 
 @app.route('/buildideas', methods=['GET', 'POST'])
 def bi():
-    return render_template('build-ideas.html', title="Build Ideas", header="Build Ideas")
+    cards = makecards()
+    return render_template('build-ideas.html', title="Build Ideas", header="Build Ideas", cards=cards)
 
 
 @app.route('/buildform', methods=['GET', 'POST'])
@@ -139,5 +141,123 @@ def addblog():
             return redirect("/blogpost")
 
 
+class Card:
+    def __init__(self, frontcode, backcode, cid):
+        self.frontcode = frontcode
+        self.backcode = backcode
+        self.cid = cid
+        ratio = 0;
+
+
+@app.route('/likedislike/<cardid>', methods=['POST', 'GET'])
+def likedislike(cardid):
+    redirect('/buildideas')
+
+
+def makecards():
+    card0 = Card("""<div class = "card-image">
+    <img class = "card-image" src = "/static/images/house-build.jpg" alt = "House Build" class = "build-img"  id = "house">
+    </div>
+    <div class="card-description">
+    <h2 class = "text-desc">Starter House</h2>
+    </div>""",
+                 """<div class = "build-material">
+                    <a href = "https://youtu.be/jUmIeyMsYXE?t=34" target="_blank"><h3 class = "tutorial">Tutorial</h3></a>
+                    <ul>
+                        <li>Birch Wood Planks</li>
+                        <li>Birch Fence</li>
+                        <li>Glass Pane</li>
+                        <li>Oak Door</li>
+                        <li>Oak Wood Stairs</li>
+                        <li>Birch Wood Slab</li>
+                        <li>Oak Wood Slab</li>
+                    </ul>
+                </div>""", 0)
+
+    card1 = Card("""<div class = "card-image">
+                <img class = "card-image" src = "/static/images/aquarium-build.jpg" alt = "Aquarium Build" class = "build-img" id = "aquarium">
+            </div>
+            <div class="card-description">
+                <h2 class = "text-desc">Wall-less Aquarium</h2>
+            </div>""",
+                 """<div class = "build-material">
+                <a href = "https://youtu.be/wQI5lww6j9I" target="_blank"><h3 class = "tutorial">Tutorial</h3></a>
+                <ul>
+                    <li>Water Bucket</li>
+                    <li>Smooth Quartz Stairs</li>
+                    <li>Glass</li>
+                    <li>Kelp (<i>Optional</i>)</li>
+                    <li>Sea Grass (<i>Optional</i>)</li>
+                    <li>Coral (<i>Optional</i>)</li>
+                    <li>Fish (<i>Optional</i>)</li>
+                </ul>
+            </div>""", 1)
+    card2 = Card("""<div class = "card-image">
+                    <img class = "card-image" src = "/static/images/stable-build.jpg" alt = "Horse Stable Build" class = "build-img" id = "stable">
+                </div>
+                <div class="card-description">
+                    <h2 class = "text-desc">Horse Stable</h2>
+                </div>""",
+                 """	<div class = "build-material">
+                    <a href = "https://youtu.be/PPAa2T1pBto" target="_blank"><h3 class = "tutorial">Tutorial</h3></a>
+                    <ul>
+                        <li>Spruce Log</li>
+                        <li>Dark Oak/Spruce Stairs</li>
+                        <li>Dark Oak/Spruce Slab</li>
+                        <li>Dark Oak/Spruce Fence</li>
+                        <li>Lantern</li>
+                        <li>Hay Bale</li>
+                        <li>Spruce Fence Gate</li>
+                    </ul>
+                </div>""", 2)
+    card3 = Card("""<div class = "card-image">
+                    <img class = "card-image" src = "/static/images/boat-build.jpg" alt = "Boat Build" class = "build-img" id = "boat">
+                </div>
+                <div class="card-description">
+                    <h2 class = "text-desc">Boat House</h2>
+                </div>""",
+                 """<div class = "build-material">
+                <a href = "https://youtu.be/kNFsOqg7aUo" target="_blank"><h3 class = "tutorial">Tutorial</h3></a>
+                <ul>
+                    <li>Spruce Trapdoor</li>
+                    <li>Oak Trapdoor</li>
+                    <li>Spruce Slab</li>
+                    <li>Spruce Stairs</li>
+                    <li>Spruce Fence</li>
+                    <li>Spruce Fence Gate</li>
+                    <li>Ladder</li>
+                    <li>Oak Door</li>
+                    <li>Stripped Spruce Log</li>
+                    <li>Campfire</li>
+                    <li>Water Bucket</li>
+                </ul>
+            </div>""", 3)
+
+    card4 = Card("""<div class = "card-image">
+                    <img class = "card-image" src = "/static/images/nether-build.jpg" alt = "Nether Base Build" class = "build-img" id = "nether">
+                </div>
+                <div class="card-description">
+                    <h2 class = "text-desc">Nether Base</h2>
+                </div> """,
+                 """	<div class = "build-material">
+                    <a href = "https://youtu.be/3UndiBacPvw?t=314" target="_blank"><h3 class = "tutorial">Tutorial</h3></a>
+                    <ul>
+                        <li>Basalt</li>
+                        <li>Nether Bricks</li>
+                        <li>Nether Brick Stairs</li>
+                        <li>Nether Brick Slab</li>
+                        <li>Crimson Planks</li>
+                        <li>Crimson Slab</li>
+                        <li>Crimson Trapdoor</li>
+                        <li>Crimson Stem</li>
+                        <li>Crimson Fence</li>
+                    </ul>
+                </div>""", 4)
+
+    cards = [card0, card1, card2, card3, card4]
+    return cards
+
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080, debug=True)
+    app.jinja_env.auto_reload = True
