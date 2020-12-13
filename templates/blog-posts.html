@@ -1,0 +1,32 @@
+{% extends "template.html" %}
+
+{% block localcss %}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/blog-posts-hub_style.css')}}">
+{% endblock %}
+
+{% block content %}
+    <!-- Main Body of Page -->
+		<div class = "main">
+			<center>
+			<div id = "blog-post-buttons">
+				<a href="/newpost"><input type="button" value = "Create a Post" id = "new-post" class = "link-buttons"></a>
+				<input type="button" value = "Delete Post" id = "delete-post" class = "link-buttons">
+	    	</div>
+			</center>
+			<div class = "list-blog-posts">
+				<table class="listings">
+					{% for row in posts %}
+						<tr>
+							<td>
+								<label class="checkbox">
+								  <input type="checkbox" class = "check-box-input" name="blog-title"/>
+								</label>
+								<label><a href="/viewpost/{{ row[0] }}">{{ row[1] }}</a></label>
+							</td>
+						</tr>
+					{% endfor %}
+	    		</table>
+	    	</div>
+			<a href="#to-top"><h3 class="to-top">Back to Top</h3></a>
+		</div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "template.html" %}
+
+{% block localcss %}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/blog-post.css')}}">
+{% endblock %}
+
+{% block content %}
+    <!-- Main Body of Page -->
+		<div class = "main">
+
+			<div id="display">
+				<h1 id="subject">{{ post[1] }}</h1>
+				<p id="body">{{ post[2] }}</p>
+			</div>
+
+			<div id="comments">
+				<form id="commentform" autocomplete="off">
+					<h1>Comments</h1>
+					<input type="text"  name="myname" placeholder="Your Name" required>
+					<input type="text"  name="comment" placeholder="Your Comment" required>
+					<input id="commentbutton" class = "link-buttons" type="submit" formaction='/comment/{{ post[0] }}' formmethod="post" value="Comment">
+				</form>
+
+				<div id = "list-comments">
+					<table>
+						{% for row in comments %}
+							<tr>
+								<td>
+									<p>{{ row[2] }} - {{ row[3] }}</p>
+								</td>
+							</tr>
+						{% endfor %}
+					</table>
+	    		</div>
+			</div>
+		</div>
+{% endblock %}

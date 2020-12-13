@@ -1,0 +1,36 @@
+#subject, #body {
+    text-align: center;
+}
+
+#subject {
+    font-size: 3em;
+}
+
+td {
+    font-size: 1em;
+}
+
+td:hover {
+    background-color: #00802b;
+}
+
+table {
+    width: 20%;
+}
+
+input {
+    width: 50%;
+}
+
+#commentbutton {
+    width: 25%;
+}
+
+#comments, #commentform {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+

@@ -1,0 +1,51 @@
+{% extends "template.html" %}
+
+{% block localcss %}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/home_style.css')}}">
+{% endblock %}
+
+{% block content %}
+    <!-- Main Body of Page -->
+		<div class = "main">
+			<div class = "get-mc">
+				<div id = "get-mc-home-img">
+					<img src="{{url_for('static', filename='images/get-mc1.jpg')}}" alt="Get Minecraft Image" id = "image-home">
+				</div>
+				<div id = "get-mc-button-np">
+					<h1>Join the Minecraft community today!</h1>
+
+
+			<!-- Make a javacript for this for the onclick using: document.getElementById("link-get-mc").onclick = function () {
+        location.href = "get-minecraft.html"; };-->
+ 					<a href="/getmc"><input type="button" value = "Get Minecraft" id = "link-get-mc" class = "link-buttons"></a>
+				</div>
+			</div>
+			<div id = "about-mc">
+				<h1>About Minecraft</h1>
+				<p>The game Minecraft was first released in November 2011. In the game, players explore a generated world
+					of block materials. Players can make use of these materials to build tools, items, structures, or
+					whatever they can imagine.</p>
+				<p>Within the game, there are no defined rules or objectives that players have to follow. One feature
+				the game offers is creative mode, which allows the player to create with infinite resources. Additionally,
+				there is also a survival mode where players will need to discover and extract resources in the world in
+				order to use the materials. </p>
+			</div>
+
+			<div class = "new-features">
+				<h1>New Features</h1>
+				<div id="scroller">
+					<div id = "go-back">
+						<img src="{{url_for('static', filename='images/back.png')}}" alt="Back" class="arrows" id="back-arrow">
+					</div>
+					<div id = "feature-img">
+						<img src="{{url_for('static', filename='images/new-characters.png')}}" alt="Feature" id = "feature">
+					</div>
+					<div id = "go-next">
+						<img src="{{url_for('static', filename='images/next.png')}}" alt="Next" class="arrows" id="next-arrow">
+					</div>
+				</div>
+			</div>
+			<p id = "-new-feature-title" align="center">New Characters</p>
+			<a href="#to-top"><h3 class="to-top">Back to Top</h3></a>
+		</div>
+{% endblock %}

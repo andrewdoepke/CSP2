@@ -1,0 +1,10 @@
+#delete-seed {
+    margin-left: 10px;
+}
+
+#create-world-seed {
+    margin: 0 auto 10px;            /* centered and bottom margin of 10px */
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+}
