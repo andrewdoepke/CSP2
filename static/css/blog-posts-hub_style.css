@@ -1,0 +1,15 @@
+#blog-post-buttons {
+    margin: 0 auto 10px;            /* centered and bottom margin of 10px */
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#delete-post {
+    margin-left: 10px;
+}
+
+
+
+
+

@@ -1,0 +1,28 @@
+.tag-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.tag-col {
+    margin-right: 15px;
+    min-width: 30%;
+}
+
+#seed-desc, #seed-num {
+    width: 100%;
+}
+
+.tag-check-box {
+    width: 20px;
+    height: 20px;
+    background-color: #c1a68b;
+	border: 3px solid #af8c6a;
+	outline: none;
+}
+
+input[type="checkbox"] {
+    background-color: #c1a68b;
+	border: 3px solid #af8c6a;
+}

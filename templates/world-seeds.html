@@ -1,0 +1,46 @@
+{% extends "template.html" %}
+
+{% block localcss %}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/world-seeds-hub_style.css')}}">
+{% endblock %}
+
+{% block content %}
+    <!-- Main Body of Page -->
+		<div class = "main">
+			<center>
+			<div id = "create-world-seed">
+				<a href="/newseed"><input type="button" value = "Add a World Seed" id = "new-seed" class = "link-buttons"></a>
+				<input type="button" value = "Delete Seed" id = "delete-seed" class = "link-buttons">
+            </div>
+			</center>
+            <div class = "list-world-seeds">
+                    <table class="listings">
+	        		<tr>
+	          			<td>
+				            <label class="checkbox">
+				              <input type="checkbox" class = "check-box-input" name="seed-desc" /> <!--value="{{ movie_key }}" -->
+				            </label>
+							<label>World Description (placeholder 1)</label>
+				        </td>
+	       			</tr>
+					<tr>
+	          			<td>
+				            <label class="checkbox">
+				              <input type="checkbox" class = "check-box-input" name="seed-desc" /> <!--value="{{ movie_key }}" -->
+				            </label>
+							<label>World Description (placeholder 2)</label>
+				        </td>
+	       			</tr>
+					<tr>
+	          			<td>
+				            <label class="checkbox">
+				              <input type="checkbox" class = "check-box-input" name="seed-desc" /> <!--value="{{ movie_key }}" -->
+				            </label>
+							<label>World Description (placeholder 3)</label>
+				        </td>
+	       			</tr>
+	    		</table>
+            </div>
+			<a href="#to-top"><h3 class="to-top">Back to Top</h3></a>
+		</div>
+{% endblock %}
