@@ -26,3 +26,8 @@ input[type="checkbox"] {
     background-color: #c1a68b;
 	border: 3px solid #af8c6a;
 }
+
+input[type="radio"] {
+    background-color: #c1a68b;
+	border: 3px solid #af8c6a;
+}

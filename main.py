@@ -16,11 +16,12 @@ keep_database = 0
 if keep_database != 1:
     with sql.connect(database) as conn:
         curr = conn.cursor()
-        curr.execute("DELETE FROM comments")
         curr.execute("DELETE FROM blogs")
         curr.execute("UPDATE blogs SET blogid=0")
         curr.execute("UPDATE comments SET commid=0")
         curr.execute("UPDATE Cards SET likes=0, dislikes=0")
+        curr.execute("DELETE FROM seeds")
+        curr.execute("UPDATE seeds SET seed_id=0")
 
 
 @app.route('/')
@@ -89,9 +90,24 @@ def comment(posti):
             return redirect('/viewpost/%s' % posti)
 
 
-@app.route('/worldseed', methods=['GET', 'POST'])
-def ws():
-    return render_template('world-seeds.html', title="World Seeds", header="World Seeds")
+@app.route('/worldseed/<plat>', methods=['GET', 'POST'])
+def ws(plat):
+    try:
+        with sql.connect(database) as con:
+            cur = con.cursor()
+            con.row_factory = sql.Row
+
+            if plat == "all":
+                cur.execute("SELECT * FROM seeds;")
+            else:
+                cur.execute("SELECT * FROM seeds WHERE platform=?;", [plat])
+
+            hi = cur.fetchall()
+
+            cur.execute("SELECT * FROM tags")
+            tags = cur.fetchall()
+    finally:
+        return render_template('world-seeds.html', title="World Seeds", header="World Seeds", seeds=list(hi), tag=list(tags), plat=plat)
 
 
 @app.route('/newseed', methods=['GET', 'POST'])
@@ -99,20 +115,41 @@ def newworldseed():
     return render_template('new-world-seed.html', title="New Seed", header="New Seed")
 
 
-@app.route('/viewseed/<posti>', methods=['GET', 'POST'])
-def viewws(posti):
+@app.route('/addseed', methods=['POST', 'GET'])
+def addseed():
+    if request.method == 'POST':
+        try:
+            desc = request.form['desc']
+            seedstr = request.form['seedstr']
+            platform = request.form['platform']
+            tag = request.form['tag']
+
+            with sql.connect(database) as con:
+                cur = con.cursor()
+
+                cur.execute("INSERT INTO seeds (seed_string, descrip, platform) VALUES(?, ?, ?);", (seedstr, desc, platform))
+                con.commit()
+                cur.execute("INSERT INTO tags (seeds_id, tag_name) VALUES(?, ?)", (cur.lastrowid, tag))
+                con.commit()
+
+                print("Records successfully added")
+        finally:
+            con.close()
+            return redirect("/worldseed/all")
+
+
+@app.route('/viewseed/<seedi>', methods=['GET', 'POST'])
+def viewws(seedi):
     try:
         with sql.connect(database) as con:
             curs = con.cursor()
             con.row_factory = sql.Row
-            curs.execute("SELECT * FROM blogs WHERE blogid == ?;", [posti])
+            curs.execute("SELECT * FROM seeds WHERE seed_id=?", [seedi])
             hi = curs.fetchone()
-            curs.execute("SELECT * FROM comments WHERE blogid == ?", [posti])
-            com = curs.fetchall()
+            curs.execute("SELECT * FROM tags WHERE seeds_id == ?", [seedi])
+            tag = curs.fetchone()
     finally:
-        return render_template('world-seed.html', title="View Seed", header="View Seed", seed=hi)
-
-
+        return render_template('world-seed.html', title="View Seed", header="View Seed", seed=hi, tag=tag)
 
 
 @app.route('/buildideas', methods=['GET', 'POST'])
