@@ -99,9 +99,20 @@ def newworldseed():
     return render_template('new-world-seed.html', title="New Seed", header="New Seed")
 
 
-@app.route('/viewseed', methods=['GET', 'POST'])
-def viewws():
-    return render_template('world-seed.html', title="View Seed", header="View Seed")
+@app.route('/viewseed/<posti>', methods=['GET', 'POST'])
+def viewws(posti):
+    try:
+        with sql.connect(database) as con:
+            curs = con.cursor()
+            con.row_factory = sql.Row
+            curs.execute("SELECT * FROM blogs WHERE blogid == ?;", [posti])
+            hi = curs.fetchone()
+            curs.execute("SELECT * FROM comments WHERE blogid == ?", [posti])
+            com = curs.fetchall()
+    finally:
+        return render_template('world-seed.html', title="View Seed", header="View Seed", seed=hi)
+
+
 
 
 @app.route('/buildideas', methods=['GET', 'POST'])
