@@ -14,7 +14,7 @@
 	    	</div>
 			</center>
 			<div class = "list-blog-posts">
-				<table class="listings">
+				<table class="listings" id="list">
 					{% for row in posts %}
 						<tr>
 							<td>
@@ -29,4 +29,14 @@
 	    	</div>
 			<a href="#to-top"><h3 class="to-top">Back to Top</h3></a>
 		</div>
+{% endblock %}
+
+{% block scripts %}
+	<script>
+		var hi = document.getElementById("list").innerHTML;
+		hi = (hi.trim) ? hi.trim() : hi.replace(/^\s+/,'');
+		if(hi == '') {
+			document.getElementById("list").outerHTML = "<h2 id='nothing'>Nothing to see here</h2>";
+		}
+	</script>
 {% endblock %}
