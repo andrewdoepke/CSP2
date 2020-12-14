@@ -7,10 +7,11 @@
 {% block content %}
     <!-- Main Body of Page -->
 		<div class = "main">
+			<form>
 			<center>
 			<div id = "blog-post-buttons">
 				<a href="/newpost"><input type="button" value = "Create a Post" id = "new-post" class = "link-buttons"></a>
-				<input type="button" value = "Delete Post" id = "delete-post" class = "link-buttons">
+				<input type="submit" formaction="/delposts" formmethod="POST" value = "Delete Post" id = "delete-post" class = "link-buttons">
 	    	</div>
 			</center>
 			<div class = "list-blog-posts">
@@ -19,7 +20,7 @@
 						<tr>
 							<td>
 								<label class="checkbox">
-								  <input type="checkbox" class = "check-box-input" name="blog-title"/>
+								  <input type="checkbox" class = "check-box-input" name="blog" value="{{ row[0] }}"/>
 								</label>
 								<label><a href="/viewpost/{{ row[0] }}">{{ row[1] }}</a></label>
 							</td>
@@ -28,6 +29,7 @@
 	    		</table>
 	    	</div>
 			<a href="#to-top"><h3 class="to-top">Back to Top</h3></a>
+			</form>
 		</div>
 {% endblock %}
 

@@ -31,6 +31,17 @@ input {
     flex-direction: column;
 }
 
+#nothing {
+    margin-bottom: 0.5em;
+    color: white;
+}
 
+#commentform h1 {
+    color: white;
+}
+
+#comments {
+    margin-bottom: 1em;
+}
 
 

@@ -1,4 +1,5 @@
 import math
+import sys
 
 from flask import Flask, render_template, request
 import sqlite3 as sql
@@ -17,12 +18,10 @@ if keep_database != 1:
     with sql.connect(database) as conn:
         curr = conn.cursor()
         curr.execute("DELETE FROM blogs")
-        curr.execute("UPDATE blogs SET blogid=0")
-        curr.execute("UPDATE comments SET commid=0")
         curr.execute("UPDATE Cards SET likes=0, dislikes=0")
         curr.execute("DELETE FROM seeds")
-        curr.execute("UPDATE seeds SET seed_id=0")
-
+        conn.commit()
+        curr.close()
 
 @app.route('/')
 @app.route('/home')
@@ -56,6 +55,24 @@ def newblog():
     return render_template('new-blog-post.html', title="New Post", header="New Post")
 
 
+@app.route('/delposts', methods=['GET', 'POST'])
+def delposts():
+    if request.method == 'POST':
+        try:
+            posts = request.form.getlist('blog')
+            for a in posts:
+                print(a)
+            with sql.connect(database) as con:
+                con.execute("DELETE FROM blogs WHERE blogid IN ({seq})".format(seq=','.join(['?'] * len(posts))), posts)
+                print("Records deleted successfully")
+                con.commit()
+        except:
+            print(sys.exc_info())
+        finally:
+            con.close()
+            return redirect("/blogpost")
+
+
 @app.route('/viewpost/<posti>', methods=['GET', 'POST'])
 def viewblog(posti):
     try:
@@ -69,6 +86,24 @@ def viewblog(posti):
     finally:
         return render_template('blog-post.html', title="Blog Posts", header="Minecraft Blog", post=hi,
                                comments=list(com))
+
+
+@app.route('/delcomm/<posti>', methods=['GET', 'POST'])
+def delcomm(posti):
+    if request.method == 'POST':
+        try:
+            co = request.form.getlist('commentd')
+            for a in co:
+                print(a)
+            with sql.connect(database) as con:
+                con.execute("DELETE FROM comments WHERE commid IN ({seq})".format(seq=','.join(['?'] * len(co))), co)
+                print("Records deleted successfully")
+                con.commit()
+        except:
+            print(sys.exc_info())
+        finally:
+            con.close()
+            return redirect("/viewpost/%s" % posti)
 
 
 @app.route('/comment/<posti>', methods=['GET', 'POST'])
@@ -104,7 +139,10 @@ def ws(plat):
 
             hi = cur.fetchall()
 
-            cur.execute("SELECT * FROM tags")
+            if plat == "all":
+                cur.execute("SELECT * FROM tags")
+            else:
+                cur.execute("SELECT * FROM tags WHERE seeds_id IN (SELECT seed_id FROM seeds WHERE platform=? );", [plat])
             tags = cur.fetchall()
     finally:
         return render_template('world-seeds.html', title="World Seeds", header="World Seeds", seeds=list(hi), tag=list(tags), plat=plat)
@@ -113,6 +151,24 @@ def ws(plat):
 @app.route('/newseed', methods=['GET', 'POST'])
 def newworldseed():
     return render_template('new-world-seed.html', title="New Seed", header="New Seed")
+
+
+@app.route('/delseeds', methods=['GET', 'POST'])
+def delseeds():
+    if request.method == 'POST':
+        try:
+            se = request.form.getlist('seed')
+            for a in se:
+                print(a)
+            with sql.connect(database) as con:
+                con.execute("DELETE FROM seeds WHERE seed_id IN ({seq})".format(seq=','.join(['?'] * len(se))), se)
+                print("Records deleted successfully")
+                con.commit()
+        except:
+            print(sys.exc_info())
+        finally:
+            con.close()
+            return redirect("/worldseed/all")
 
 
 @app.route('/addseed', methods=['POST', 'GET'])
@@ -169,7 +225,7 @@ def login():
 
 
 @app.errorhandler(404)
-def page_not_found(e):
+def page_not_found():
     return render_template('404.html', title="Oops!", header="Oh No!"), 404
 
 

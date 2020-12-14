@@ -26,10 +26,6 @@ h1 {
     text-align: center;
 }
 
-#proper {
-    text-transform: capitalize;
-}
-
 #nothing {
     margin: 1em;
     color: white;

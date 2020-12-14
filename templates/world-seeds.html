@@ -7,10 +7,11 @@
 {% block content %}
     <!-- Main Body of Page -->
 		<div class = "main">
+			<form>
 			<center>
 			<div id = "create-world-seed">
 				<a href="/newseed"><input type="button" value = "Add a World Seed" id = "new-seed" class = "link-buttons"></a>
-				<input type="button" value = "Delete Seed" id = "delete-seed" class = "link-buttons">
+				<input type="submit" formaction="/delseeds" formmethod="POST" value = "Delete Seeds" id = "delete-seed" class = "link-buttons">
             </div>
 			</center>
 			<h2>Choose your platform: </h2>
@@ -25,14 +26,14 @@
                 	<input type="button" name="platform" value="Bedrock" id="bedrock" onclick="location.href='/worldseed/bedrock'">
 				</div>
 			</div>
-			<h1>Platform: <span id="proper"> {{ plat }} </span></h1></h1>
+			<h1>Platform: <span class="proper"> {{ plat }} </span></h1>
             <div class = "list-world-seeds">
 				<table class="listings" id="list">
 					{% for row in seeds %}
 						<tr>
 							<td>
 								<label class="checkbox">
-								  <input type="checkbox" class = "check-box-input" name="seed-title"/>
+								  <input type="checkbox" class = "check-box-input" name="seed" value="{{ row[0] }}"/>
 								</label>
 								<label><a href="/viewseed/{{ row[0] }}">Seed: {{ row[1] }} - Type: {{ tag[loop.index0][1] }}</a></label>
 							</td>
@@ -41,6 +42,7 @@
 	    		</table>
 			<a href="#to-top"><h3 class="to-top">Back to Top</h3></a>
 			</div>
+			</form>
 		</div>
 {% endblock %}
 
