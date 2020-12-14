@@ -7,7 +7,6 @@
 {% block content %}
     <!-- Main Body of Page -->
 		<div class = "main">
-
 			<div id="display">
 				<h1 id="subject">{{ post[1] }}</h1>
 				<p id="body">{{ post[2] }}</p>
@@ -20,18 +19,37 @@
 					<input type="text"  name="comment" placeholder="Your Comment" required>
 					<input id="commentbutton" class = "link-buttons" type="submit" formaction='/comment/{{ post[0] }}' formmethod="post" value="Comment">
 				</form>
-
+			<form>
 				<div id = "list-comments">
-					<table>
+					<table id="list">
 						{% for row in comments %}
 							<tr>
 								<td>
-									<p>{{ row[2] }} - {{ row[3] }}</p>
+									<p>
+										{{ row[2] }} - {{ row[3] }}
+										<label class="checkbox">
+								  			<input type="checkbox" class = "check-box-input" name="commentd" value="{{ row[0] }}" required/>
+										</label>
+									</p>
 								</td>
 							</tr>
 						{% endfor %}
 					</table>
 	    		</div>
+				<div id="delcomments">
+					<input type="submit" formaction="/delcomm/{{ post[0] }}"  formmethod="POST" value = "Delete" id = "delete-post" class = "link-buttons">
+				</div>
+			</form>
 			</div>
 		</div>
+{% endblock %}
+
+{% block scripts %}
+	<script>
+		var hi = document.getElementById("list").innerHTML;
+		hi = (hi.trim) ? hi.trim() : hi.replace(/^\s+/,'');
+		if(hi == '') {
+			document.getElementById("list").outerHTML = "<h2 id='nothing'>Nothing to see here</h2>";
+		}
+	</script>
 {% endblock %}

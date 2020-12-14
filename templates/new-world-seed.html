@@ -9,34 +9,39 @@
 		<div class = "main">
             <form>
                 <h2>Description</h2>
-                <input type="text" id = "seed-desc" required>
+                <input type="text" id = "seed-desc" name="desc" required>
                 <br><br>
-                <h2>Seed Number</h2>
-                <input type="text" id = "seed-num" required>
+                <h2>Seed String (Numbers or text you used)</h2>
+                <input type="text" id = "seed-num" name="seedstr" required>
                 <br><br>
-                <h2>Tags</h2>
+                <h2>Choose your platform: </h2>
+                <input type="radio" name="platform" value="java" id="java" required>
+                <label for="java">Java Edition</label>
+                <input type="radio" name="platform" value="bedrock" id="bedrock" required>
+                <label for="bedrock">Bedrock Edition</label>
+                <br><br>
+                <h2>Tags (Select One)</h2>
 
                 <div class = "tag-container">
                     <div class = "tag-col">
-                        <input type="checkbox" class = "tag-check-box" name="tag1" id="tag1" value="Village">
+                        <input type="radio" class = "tag-check-box" name="tag" id="tag1" value="Village" required>
                         <label for="tag1">Village</label><br>
-                        <input type="checkbox" class = "tag-check-box" name="tag2" id="tag2" value="Village">
+                        <input type="radio" class = "tag-check-box" name="tag" id="tag2" value="Mountains" required>
                         <label for="tag2">Mountains</label><br>
-                        <input type="checkbox" class = "tag-check-box" name="tag3" id="tag3" value="Village">
+                        <input type="radio" class = "tag-check-box" name="tag" id="tag3" value="FlatLand" required>
                         <label for="tag3">Flat Land</label><br>
                     </div>
                     <div class = "tag-col">
-                        <input type="checkbox" class = "tag-check-box" name="tag4" id="tag4" value="Village">
+                        <input type="radio" class = "tag-check-box" name="tag" id="tag4" value="Lava" required>
                         <label for="tag4">Lava</label><br>
-                        <input type="checkbox" class = "tag-check-box" name="tag5" id="tag5" value="Village">
+                        <input type="radio" class = "tag-check-box" name="tag" id="tag5" value="Diamonds" required>
                         <label for="tag5">Diamonds</label><br>
-                        <input type="checkbox" class = "tag-check-box" name="tag6" id="tag6" value="Village">
+                        <input type="radio" class = "tag-check-box" name="tag" id="tag6" value="Mineshaft" required>
                         <label for="tag6">Mineshaft</label><br>
                     </div>
                 </div>
 
-                <input type="submit" class = "link-buttons">
-                <br><a href="/viewseed">link to seed</a>
+                <input type="submit" formaction='/addseed' formmethod="post" class = "link-buttons">
                 <br><br>
             </form>
 		</div>

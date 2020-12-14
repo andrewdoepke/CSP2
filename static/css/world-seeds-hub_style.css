@@ -8,3 +8,25 @@
     flex-direction: row;
     justify-content: center;
 }
+
+#choose {
+    display: flex;
+    justify-content: center;
+}
+
+#choose div {
+   margin: 0.5em;
+}
+
+h2 {
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+}
+
+#nothing {
+    margin: 1em;
+    color: white;
+}
