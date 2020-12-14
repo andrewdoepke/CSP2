@@ -1,12 +1,22 @@
 import math
+import sqlite3 as sql
 import sys
 
-from flask import Flask, render_template, request
-import sqlite3 as sql
-
+from flask import Flask, render_template, request, flash
+from flask_login import LoginManager, login_user, logout_user
 from werkzeug.utils import redirect
+from passlib.hash import pbkdf2_sha256 as hasher
+from user import get_user
 
 app = Flask(__name__)
+
+SECRET_KEY = "not secure lol"
+
+app.config['SECRET_KEY'] = SECRET_KEY
+
+lm = LoginManager()
+lm.init_app(app)
+lm.login_view = "login"
 
 database = "static/database/database.db"
 
@@ -22,6 +32,17 @@ if keep_database != 1:
         curr.execute("DELETE FROM seeds")
         conn.commit()
         curr.close()
+
+ADMIN_USERS = ["admin"]
+
+PASSWORDS = {
+    "admin": "$pbkdf2-sha256$29000$7H1v7T0npDRG6D3HmFNqDQ$VunCaN5GU0l9EYYeuHA8xgpLFi36SryJ8syoZcc3Jec",
+    "normaluser": "$pbkdf2-sha256$29000$7b1XqnVuTYmxNkaolXJO6Q$9PqCSCSFkaCM3oeeAcI0O5ZJ6G46Lq1NG3z/dYjlWMA",
+}
+
+@lm.user_loader
+def load_user(user_id):
+    return get_user(user_id, PASSWORDS, ADMIN_USERS)
 
 @app.route('/')
 @app.route('/home')
@@ -220,9 +241,26 @@ def biform():
 
 
 @app.route('/adminlogin', methods=['GET', 'POST'])
-def login():
+def alogin():
     return render_template('admin-login.html', title="Login", header="Login")
 
+@app.route('/login', methods=['POST'])
+def login():
+    user = request.form.get('user')
+    password = request.form.get('passw')
+    user = get_user(user, PASSWORDS, ADMIN_USERS)
+    if user is not None:
+        if hasher.verify(password, user.password):
+            login_user(user)
+            return redirect('/home')
+    flash("Invalid Info! Try again")
+    return redirect('/adminlogin')
+
+@app.route('/logout')
+def logout():
+    logout_user()
+    flash("You have logged out.")
+    return redirect('/home')
 
 @app.errorhandler(404)
 def page_not_found():

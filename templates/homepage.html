@@ -49,3 +49,12 @@
 			<a href="#to-top"><h3 class="to-top">Back to Top</h3></a>
 		</div>
 {% endblock %}
+
+{% block scripts %}
+	<script>
+		{% for message in get_flashed_messages() %}
+        	var msg = {{ message }};
+        	alert(msg);
+        {% endfor %}
+	</script>
+{% endblock %}
