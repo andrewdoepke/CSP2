@@ -13,6 +13,9 @@
 			<div class="stickysticky">
 		<!-- Banner at Head of Webpage -->
 				<div class = "header">{{ header }}</div>
+				{% if current_user.is_authenticated and current_user.is_admin%}
+				<h3 style="text-align: center; color: white; background-color: #264d00;">Hello Admin</h3>
+				{% endif %}
 		<!-- Navigation Bar -->
 				<div class = "navigation">
 					<a href="/home">Home</a>
