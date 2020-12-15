@@ -50,6 +50,11 @@ def main():
     return render_template('homepage.html', title="Home", header="All you need to know about Minecraft", user=current_user)
 
 
+@app.route('/report')
+@app.route('/report.html')
+def report():
+    return render_template('report.html', title="Project Report", header="Project Report")
+
 @app.route('/getmc')
 def getmc():
     return render_template('get-minecraft.html', title="Get Minecraft", header="Get Minecraft")
