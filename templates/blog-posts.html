@@ -11,17 +11,21 @@
 			<center>
 			<div id = "blog-post-buttons">
 				<a href="/newpost"><input type="button" value = "Create a Post" id = "new-post" class = "link-buttons"></a>
-				<input type="submit" formaction="/delposts" formmethod="POST" value = "Delete Post" id = "delete-post" class = "link-buttons">
-	    	</div>
+				{% if current_user.is_authenticated and current_user.is_admin%}
+					<input type="submit" formaction="/delposts" formmethod="POST" value = "Delete Post" id = "delete-post" class = "link-buttons">
+	    		{% endif %}
+			</div>
 			</center>
 			<div class = "list-blog-posts">
 				<table class="listings" id="list">
 					{% for row in posts %}
 						<tr>
 							<td>
+								{% if current_user.is_authenticated and current_user.is_admin%}
 								<label class="checkbox">
 								  <input type="checkbox" class = "check-box-input" name="blog" value="{{ row[0] }}"/>
 								</label>
+								{% endif %}
 								<label><a href="/viewpost/{{ row[0] }}">{{ row[1] }}</a></label>
 							</td>
 						</tr>

@@ -7,6 +7,16 @@
 {% block content %}
     <!-- Main Body of Page -->
 		<div class = "main">
+			{% with messages = get_flashed_messages() %}
+			  {% if messages %}
+				<script>
+				  var messages = {{ messages | safe }};
+				  for (var i=0; i<messages.length; i++) {
+					alert(messages[i]);
+				  }
+				</script>
+			  {% endif %}
+			{% endwith %}
 			<div class = "get-mc">
 				<div id = "get-mc-home-img">
 					<img src="{{url_for('static', filename='images/get-mc1.jpg')}}" alt="Get Minecraft Image" id = "image-home">
@@ -48,13 +58,4 @@
 			<p id = "-new-feature-title" align="center">New Characters</p>
 			<a href="#to-top"><h3 class="to-top">Back to Top</h3></a>
 		</div>
-{% endblock %}
-
-{% block scripts %}
-	<script>
-		{% for message in get_flashed_messages() %}
-        	var msg = {{ message }};
-        	alert(msg);
-        {% endfor %}
-	</script>
 {% endblock %}

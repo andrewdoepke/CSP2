@@ -27,18 +27,22 @@
 								<td>
 									<p>
 										{{ row[2] }} - {{ row[3] }}
+										{% if current_user.is_authenticated and current_user.is_admin%}
 										<label class="checkbox">
 								  			<input type="checkbox" class = "check-box-input" name="commentd" value="{{ row[0] }}" required/>
 										</label>
+										{% endif %}
 									</p>
 								</td>
 							</tr>
 						{% endfor %}
 					</table>
 	    		</div>
-				<div id="delcomments">
-					<input type="submit" formaction="/delcomm/{{ post[0] }}"  formmethod="POST" value = "Delete" id = "delete-post" class = "link-buttons">
-				</div>
+				{% if current_user.is_authenticated and current_user.is_admin%}
+					<div id="delcomments">
+						<input type="submit" formaction="/delcomm/{{ post[0] }}"  formmethod="POST" value = "Delete" id = "delete-post" class = "link-buttons">
+					</div>
+				{% endif %}
 			</form>
 			</div>
 		</div>

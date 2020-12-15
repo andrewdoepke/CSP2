@@ -2,8 +2,8 @@ import math
 import sqlite3 as sql
 import sys
 
-from flask import Flask, render_template, request, flash
-from flask_login import LoginManager, login_user, logout_user
+from flask import Flask, render_template, request, flash, session
+from flask_login import LoginManager, login_user, logout_user, current_user
 from werkzeug.utils import redirect
 from passlib.hash import pbkdf2_sha256 as hasher
 from user import get_user
@@ -47,7 +47,7 @@ def load_user(user_id):
 @app.route('/')
 @app.route('/home')
 def main():
-    return render_template('homepage.html', title="Home", header="All you need to know about Minecraft")
+    return render_template('homepage.html', title="Home", header="All you need to know about Minecraft", user=current_user)
 
 
 @app.route('/getmc')
@@ -242,6 +242,7 @@ def biform():
 
 @app.route('/adminlogin', methods=['GET', 'POST'])
 def alogin():
+    session["rd"] = request.referrer
     return render_template('admin-login.html', title="Login", header="Login")
 
 @app.route('/login', methods=['POST'])
@@ -252,15 +253,15 @@ def login():
     if user is not None:
         if hasher.verify(password, user.password):
             login_user(user)
-            return redirect('/home')
+            return redirect(session["rd"])
     flash("Invalid Info! Try again")
-    return redirect('/adminlogin')
+    return render_template('admin-login.html', title="Login", header="Login")
 
 @app.route('/logout')
 def logout():
     logout_user()
     flash("You have logged out.")
-    return redirect('/home')
+    return redirect(request.referrer)
 
 @app.errorhandler(404)
 def page_not_found():

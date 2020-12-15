@@ -20,7 +20,12 @@
 					<a href="/blogpost">Blog Posts</a>
 					<a href="/worldseed/all">World Seeds</a>
 					<a href="/buildideas">Build Ideas</a>
-					<a href="/adminlogin">Login</a>
+					{% if not current_user.is_authenticated %}
+    					<a href="/adminlogin">Login</a>
+    				{% endif %}
+					{% if current_user.is_authenticated %}
+    					<a href="/logout">Logout</a>
+    				{% endif %}
 				</div>
 			</div>
 

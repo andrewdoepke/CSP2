@@ -11,8 +11,10 @@
 			<center>
 			<div id = "create-world-seed">
 				<a href="/newseed"><input type="button" value = "Add a World Seed" id = "new-seed" class = "link-buttons"></a>
+				{% if current_user.is_authenticated and current_user.is_admin%}
 				<input type="submit" formaction="/delseeds" formmethod="POST" value = "Delete Seeds" id = "delete-seed" class = "link-buttons">
-            </div>
+            	{% endif %}
+			</div>
 			</center>
 			<h2>Choose your platform: </h2>
 			<div id="choose">
@@ -32,9 +34,11 @@
 					{% for row in seeds %}
 						<tr>
 							<td>
+								{% if current_user.is_authenticated and current_user.is_admin%}
 								<label class="checkbox">
 								  <input type="checkbox" class = "check-box-input" name="seed" value="{{ row[0] }}"/>
 								</label>
+								{% endif %}
 								<label><a href="/viewseed/{{ row[0] }}">Seed: {{ row[1] }} - Type: {{ tag[loop.index0][1] }}</a></label>
 							</td>
 						</tr>
