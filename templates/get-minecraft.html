@@ -10,25 +10,26 @@
 			<!-- The 3 pictures at the top -->
 			<div class = "display-download-options">
 				<a href="#purchase-download">
-					<div class = "option-selection" id = "computer">
+					<div class = "option-selection" id = "computer" onclick="showDownload(this.id)">
 						<img src="{{url_for('static', filename='images/computer.png')}}" alt="computer">
 					</div>
 				</a>
 				<a href="#purchase-download">
-					<div class = "option-selection" id = "mobile">
+					<div class = "option-selection" id = "mobile" onclick="showDownload(this.id)">
 						<img src="{{url_for('static', filename='images/phone.png')}}" alt="Mobile">
 					</div>
 				</a>
 				<a href="#purchase-download">
-					<div class = "option-selection" id = "console">
+					<div class = "option-selection" id = "console" onclick="showDownload(this.id)">
 						<img src="{{url_for('static', filename='images/console.png')}}" alt="Gaming Console">
 					</div>
 				</a>
 			</div>
+
 			<br>
 
 			<a name="purchase-download"></a>
-			<div class = "selection-displayed">
+			<div class = "selection-displayed" id = "option-selected">
 				<div class = "purchase-where">
 					<h2>Where to purchase/download</h2>
 					<p>Choose which type of device you would like to download Minecraft on:</p>
@@ -65,4 +66,60 @@
 			<!-- anchor to top, need to not display when selection not chosen -->
 			<a href="#to-top"><h3 class="to-top">Back to Top</h3></a>
 		</div>
+{% endblock %}
+
+{% block scripts %}
+	<script>
+	function showDownload(id_choice) {
+		var display = document.getElementById("option-selected");
+		var mobile_list = document.getElementById("moblist");
+		var computer_list = document.getElementById("comlist");
+		var console_list = document.getElementById("conlist");
+		var idVal = id_choice;
+
+		if (display.style.display === "none") {
+			display.style.display = "flex";
+
+			if (idVal === "computer") {
+				computer_list.style.display = "block";
+				mobile_list.style.display = "none";
+				console_list.style.display = "none";
+			} else if (idVal === "mobile") {
+				mobile_list.style.display = "block";
+				computer_list.style.display = "none";
+				console_list.style.display = "none";
+			} else if (idVal === "console") {
+				console_list.style.display = "block";
+				mobile_list.style.display = "none";
+				computer_list.style.display = "none";
+			}
+		} else if (display.style.display === "flex") {
+			if (idVal === "computer") {
+				computer_list.style.display = "block";
+				mobile_list.style.display = "none";
+				console_list.style.display = "none";
+			} else if (idVal === "mobile") {
+				mobile_list.style.display = "block";
+				computer_list.style.display = "none";
+				console_list.style.display = "none";
+			} else if (idVal === "console") {
+				console_list.style.display = "block";
+				mobile_list.style.display = "none";
+				computer_list.style.display = "none";
+			}
+		}
+	}
+
+	function showLinks() {
+		var selection = document.getElementById("option-selected");
+	}
+
+	// Hide the div on load
+	document.getElementById("option-selected").style.display = "none";
+
+	document.getElementById("option-selected").onclick = function() {
+  		showDownload(this.id);
+  	};
+
+	</script>
 {% endblock %}
