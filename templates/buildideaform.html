@@ -6,11 +6,11 @@
 			<h1>What's Your Idea?</h1>
             <form>
                 <h2>Title of build</h2>
-                <input type="text" required><br><br>
+                <input type="text" name="title" required><br><br>
                 <h2>Give a description or link to photo of a build</h2>
-                <textarea rows="4" style="width: 100%;"></textarea><br><br>
+                <textarea rows="4" name="desc" style="width: 100%;"></textarea><br><br>
 
-                <input type="submit" class = "link-buttons" onclick="submitted()">
+                <input type="submit" formmethod="POST" formaction="/send" class = "link-buttons" onclick="submitted()">
                 <h2 id = "checkitout"></h2>
             </form>
 		</div>
@@ -19,7 +19,7 @@
 {% block scripts %}
 	<script>
 	function submitted() {
-        document.getElementById("checkitout").outerHTML = "<h2><br>We will check this out!</h2>";
+        alert("Thanks! We will check this out!");
 	}
 	</script>
 {% endblock %}

@@ -4,11 +4,13 @@ import sys
 
 from flask import Flask, render_template, request, flash, session
 from flask_login import LoginManager, login_user, logout_user, current_user
+from flask_mail import Mail, Message
 from werkzeug.utils import redirect
 from passlib.hash import pbkdf2_sha256 as hasher
 from user import get_user
 
 app = Flask(__name__)
+mail = Mail(app)
 
 SECRET_KEY = "not secure lol"
 
@@ -43,6 +45,19 @@ PASSWORDS = {
 @lm.user_loader
 def load_user(user_id):
     return get_user(user_id, PASSWORDS, ADMIN_USERS)
+
+@app.route('/send', methods=['GET', 'POST'])
+def mail():
+    if request.method == 'POST':
+        try:
+            title = request.form['title']
+            desc = request.form['desc']
+            msg = Message("Request for a Build Idea", sender = "Flask App", recipients = ['doepkead4798@uwec.edu'])
+            msg.body = title + ":\n" + desc
+            mail.send(msg)
+        finally:
+            return redirect('/buildideas')
+
 
 @app.route('/')
 @app.route('/home')
