@@ -43,7 +43,7 @@
 					<a href="https://www.youtube.com/Minecraft" target="_blank"><img alt="YouTube logo" src="{{url_for('static', filename='images/youtube-logo.png')}}" class = "social-media-links"></a>
 					<a href="https://www.facebook.com/minecraft/" target="_blank"><img alt="Facebook logo" src="{{url_for('static', filename='images/facebook-logo.png')}}" class = "social-media-links"></a>
 					{% if current_user.is_authenticated and current_user.is_admin%}
-						<a href="/report" style="color: white;">View Report Page</a>
+						<br><a href="/report" style="color: white;">View Report Page</a>
 					{% endif %}
 				</div>
 			</div>

@@ -7,9 +7,68 @@
 {% block content %}
     <!-- Main Body of Page -->
 		<div class = "main">
-            Admin Username: admin<br>
-            Admin password: adminpassw<br>
-            Normal Username: normaluser<br>
-            Normal password: userpassw<br>
+            <h1><u>Login Information:</u></h1>
+            <p><b>Admin Username:</b> admin<br>
+                <b>Admin password:</b> adminpassw<br>
+                <b>Normal Username:</b> normaluser<br>
+                <b>Normal password:</b> userpassw<br>
+            </p>
+            <h1><u>How We Met the Project Expectations:</u></h1>
+            <p>When designing this website, we had the Minecraft community in mind to bring content about new features
+            in the game, an introduction to what Minecraft is for those that are new to the community, information on
+            how to get the game for which type of device you will play on, a way for users to connect with the blog
+            posts, post world seed information that others may find useful, and inspire new builds that users may
+            enjoy.</p>
+            <p>On each webpage, we included a header banner to describe what webpage you are currently on. Making up
+            our whole website, we have a total of 12 webpages with different purposes. The 404.html webpage is to display
+            to the user that the page they are trying to reach is unavailable/not found, the homepage is what the user
+            first opens up to as an introduction to the site, the Get Minecraft page directs users towards the right
+            direction on where they can download the game, and the admin login page allows an admin user to delete
+            some content for the blog posts and world seed posts. Additionally, we have hub pages to contain the
+            different posts users create for the blog posts or world seed posts. On these hub pages, there is a button
+            that directs the user to a webpage that contains a form to create the new post, and once the post is
+            submitted, there is a new webpage created containing the blog post or world seed post. Throughout our website
+            there is a navigation bar listing the main webpages that users can visit. In those different webpages, there
+            are different navigation links that direct the user to the intended webpage they wish to visit.</p>
+            <p>Throughout our website, we implemented CSS media queries to alter the display for small and large displays
+            by taking content that is aligned in rows to then arrange the content in column format (homepage and get
+            minecraft primarily use this). Additionally, in the build ideas webpage, we have the displayed cards wrap
+            to the next row as the width of the display decreases.</p>
+            <p>Across the website, we implemented a template.html file to reduce redundancy for common features in all
+            webpages that includes a global style css file primarily to style the theme of the website and some key features.
+            For individual webpages, there is a local css block that links the style sheet for that webpage. Additionally,
+            for each image displayed in our website, there is unique alternate text that displays describing the image
+            if it is unavailable for the user. Also included in our template.html file is the favicon for each webpage
+            the user visits. We used our global style sheet and the template.html to allow a coherent style implementing
+            two or more different font faces displaying the text but also to align content neatly.</p>
+            <p>When creating the website, we organized our non-HTML resources in the main static directory with sub-
+            directories named css, images, and js for the corresponding file type.</p>
+
+            <h2>11. CHECK TO SEE IF THE HTML/CSS IS GOOD WITHOUT ANY WARNINGS OR ERRORS, delete this when done.</h2><br>
+
+            <p>In our HTML and CSS files, we used a validator to assure there were no errors or warnings. As a result,
+            we found neither. When naming our files, we kept the file name entirely alphanumeric with hyphens or
+            underscores.</p>
+            <p>I previously discussed briefly some of the content in our webpages, but we implemented the use of forms
+            to create a new blog post or new world seed post, comment under a individual blog post, submit an idea for
+            a new build idea, like/dislike the individual builds on the card, and login with user credentials. Some of
+            these forms will then send the information either to the database or in the case of the build idea form page,
+            the input will be sent by email so we can receive the information directly.</p>
+            <p>We provided links to external sites in a new tab in the footer of the website by linking the official
+            Minecraft social media by clicking on the corresponding image. On the get minecraft page, after selecting
+            a device option, the user can click on the correct link to download the game that will open in a new tab.
+            Also, in the build ideas webpage, on the back of each card, there is a link for the original YouTube creator
+            walking through how to make the build with the materials listed under the card. These cards I believe are
+            an interesting animation that organizes the information on the card, a picture and description on the front
+            but also the link, materials to use, and a like/dislike option on the back of the card. In order to flip
+            between the front and back, you simply hover your mouse over the card you would like to learn more about.
+            This animation is powered by CSS in the build-ideas_style.css file.</p>
+            <p>Overall, we believe we used meaningful id and class names in our code and kept a consistent layout that is
+            readable and uses conventional formatting.</p>
+            <p>Finally, we implemented a login portal where there are two registered users (login credentials are at
+            the top of this webpage), admin and normal user. When the user is an admin, the option to delete blog posts or
+            world seed posts will display. Additionally, when a user is logged in, the navigation bar will display the
+            option to then log out</p>
+            <a href="#to-top"><h3 class="to-top">Back to Top</h3></a>
         </div>
 {% endblock %}
