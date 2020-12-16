@@ -10,8 +10,16 @@
                 <h2>Give a description or link to photo of a build</h2>
                 <textarea rows="4" style="width: 100%;"></textarea><br><br>
 
-                <input type="submit" class = "link-buttons">
-                <h2><br>We will check this out! ###NOTE: this will be hidden unless submitted once javascript is implemented, and form will be posted to our email</h2>
+                <input type="submit" class = "link-buttons" onclick="submitted()">
+                <h2 id = "checkitout"></h2>
             </form>
 		</div>
+{% endblock %}
+
+{% block scripts %}
+	<script>
+	function submitted() {
+        document.getElementById("checkitout").outerHTML = "<h2><br>We will check this out!</h2>";
+	}
+	</script>
 {% endblock %}
