@@ -1,5 +1,9 @@
 {% extends "template.html" %}
 
+{% block localcss %}
+	<script type="text/javascript" src="{{url_for('static', filename='js/bideaf.js')}}" defer></script>
+{% endblock %}
+
 {% block content %}
     <!-- Main Body of Page -->
 		<div class = "main">
@@ -14,12 +18,4 @@
                 <h2 id = "checkitout"></h2>
             </form>
 		</div>
-{% endblock %}
-
-{% block scripts %}
-	<script>
-	function submitted() {
-        alert("Thanks! We will check this out!");
-	}
-	</script>
 {% endblock %}

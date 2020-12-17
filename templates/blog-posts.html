@@ -2,6 +2,7 @@
 
 {% block localcss %}
     <link rel="stylesheet" href="{{url_for('static', filename='css/blog-posts-hub_style.css')}}">
+	<script type="text/javascript" src="{{url_for('static', filename='js/posts.js')}}" defer></script>
 {% endblock %}
 
 {% block content %}
@@ -35,14 +36,4 @@
 			<a href="#to-top"><h3 class="to-top">Back to Top</h3></a>
 			</form>
 		</div>
-{% endblock %}
-
-{% block scripts %}
-	<script>
-		var hi = document.getElementById("list").innerHTML;
-		hi = (hi.trim) ? hi.trim() : hi.replace(/^\s+/,'');
-		if(hi == '') {
-			document.getElementById("list").outerHTML = "<h2 id='nothing'>No Posts Available</h2>";
-		}
-	</script>
 {% endblock %}
