@@ -28,5 +28,9 @@ h1 {
 
 #nothing {
     margin: 1em;
-    color: white;
+    color: black;
+}
+
+#backbut {
+    margin-bottom: 0.5em;
 }
