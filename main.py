@@ -360,7 +360,7 @@ def makecards():
         con.close()
 
     card0 = Card("""<div class = "card-image">
-    <img class = "card-image" src = "/static/images/house-build.jpg" alt = "House Build" class = "build-img"  id = "house">
+    <img class = "card-image build-img" src = "/static/images/house-build.jpg" alt = "House Build" id = "house">
     </div>
     <div class="card-description">
     <h2 class = "text-desc">Starter House</h2>
@@ -379,7 +379,7 @@ def makecards():
                 </div>""", 0, ratios[0])
 
     card1 = Card("""<div class = "card-image">
-                <img class = "card-image" src = "/static/images/aquarium-build.jpg" alt = "Aquarium Build" class = "build-img" id = "aquarium">
+                <img class = "card-image build-img" src = "/static/images/aquarium-build.jpg" alt = "Aquarium Build" id = "aquarium">
             </div>
             <div class="card-description">
                 <h2 class = "text-desc">Wall-less Aquarium</h2>
@@ -397,7 +397,7 @@ def makecards():
                 </ul>
             </div>""", 1, ratios[1])
     card2 = Card("""<div class = "card-image">
-                    <img class = "card-image" src = "/static/images/stable-build.jpg" alt = "Horse Stable Build" class = "build-img" id = "stable">
+                    <img class = "card-image build-img" src = "/static/images/stable-build.jpg" alt = "Horse Stable Build" id = "stable">
                 </div>
                 <div class="card-description">
                     <h2 class = "text-desc">Horse Stable</h2>
@@ -415,7 +415,7 @@ def makecards():
                     </ul>
                 </div>""", 2, ratios[2])
     card3 = Card("""<div class = "card-image">
-                    <img class = "card-image" src = "/static/images/boat-build.jpg" alt = "Boat Build" class = "build-img" id = "boat">
+                    <img class = "card-image build-img" src = "/static/images/boat-build.jpg" alt = "Boat Build" id = "boat">
                 </div>
                 <div class="card-description">
                     <h2 class = "text-desc">Boat House</h2>
@@ -438,13 +438,13 @@ def makecards():
             </div>""", 3, ratios[3])
 
     card4 = Card("""<div class = "card-image">
-                    <img class = "card-image" src = "/static/images/nether-build.jpg" alt = "Nether Base Build" class = "build-img" id = "nether">
+                    <img class = "card-image build-img" src = "/static/images/nether-build.jpg" alt = "Nether Base Build" id="nether">
                 </div>
                 <div class="card-description">
                     <h2 class = "text-desc">Nether Base</h2>
                 </div> """,
                  """	<div class = "build-material">
-                    <a href = "https://youtu.be/3UndiBacPvw?t=314" target="_blank"><h3 class = "tutorial">Tutorial</h3></a>
+                    <a href = "https://youtu.be/3UndiBacPvw?t=314" target="_blank"><h3 class="tutorial">Tutorial</h3></a>
                     <ul>
                         <li>Basalt</li>
                         <li>Nether Bricks</li>
