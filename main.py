@@ -22,7 +22,7 @@ lm.login_view = "login"
 
 database = "static/database/database.db"
 
-keep_database = 0
+keep_database = 1
 # if you set this to 1, it keeps the database. Use this for testing but for Github sake right now,
 # keep this at 0 so it clears the database before running. This will prevent duplicates if you need it
 
