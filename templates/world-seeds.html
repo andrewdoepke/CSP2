@@ -11,19 +11,21 @@
 			<center>
 			<div id = "create-world-seed">
 				<a href="/newseed"><input type="button" value = "Add a World Seed" id = "new-seed" class = "link-buttons"></a>
+				{% if current_user.is_authenticated and current_user.is_admin%}
 				<input type="submit" formaction="/delseeds" formmethod="POST" value = "Delete Seeds" id = "delete-seed" class = "link-buttons">
-            </div>
+            	{% endif %}
+			</div>
 			</center>
 			<h2>Choose your platform: </h2>
 			<div id="choose">
 				<div>
-					<input type="button" name="platform" value="All" id="all" onclick="location.href='/worldseed/all'">
+					<input type="button" name="platform" value="All" id="all" onclick="location.href='/worldseed/all'" class = "link-buttons">
 				</div>
                 <div>
-					<input type="button" name="platform" value="Java" id="java" onclick="location.href='/worldseed/java'">
+					<input type="button" name="platform" value="Java" id="java" onclick="location.href='/worldseed/java'" class = "link-buttons">
 				</div>
 				<div>
-                	<input type="button" name="platform" value="Bedrock" id="bedrock" onclick="location.href='/worldseed/bedrock'">
+                	<input type="button" name="platform" value="Bedrock" id="bedrock" onclick="location.href='/worldseed/bedrock'" class = "link-buttons">
 				</div>
 			</div>
 			<h1>Platform: <span class="proper"> {{ plat }} </span></h1>
@@ -32,9 +34,11 @@
 					{% for row in seeds %}
 						<tr>
 							<td>
+								{% if current_user.is_authenticated and current_user.is_admin%}
 								<label class="checkbox">
 								  <input type="checkbox" class = "check-box-input" name="seed" value="{{ row[0] }}"/>
 								</label>
+								{% endif %}
 								<label><a href="/viewseed/{{ row[0] }}">Seed: {{ row[1] }} - Type: {{ tag[loop.index0][1] }}</a></label>
 							</td>
 						</tr>
@@ -51,7 +55,7 @@
 		var hi = document.getElementById("list").innerHTML;
 		hi = (hi.trim) ? hi.trim() : hi.replace(/^\s+/,'');
 		if(hi == '') {
-			document.getElementById("list").outerHTML = "<h2 id='nothing'>Nothing to see here</h2>";
+			document.getElementById("list").outerHTML = "<h2 id='nothing'>No World Seeds Available</h2>";
 		}
 	</script>
 {% endblock %}

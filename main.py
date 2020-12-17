@@ -1,12 +1,24 @@
 import math
+import sqlite3 as sql
 import sys
 
-from flask import Flask, render_template, request
-import sqlite3 as sql
-
+from flask import Flask, render_template, request, flash, session
+from flask_login import LoginManager, login_user, logout_user, current_user
+from flask_mail import Mail, Message
 from werkzeug.utils import redirect
+from passlib.hash import pbkdf2_sha256 as hasher
+from user import get_user
 
 app = Flask(__name__)
+mail = Mail(app)
+
+SECRET_KEY = "not secure lol"
+
+app.config['SECRET_KEY'] = SECRET_KEY
+
+lm = LoginManager()
+lm.init_app(app)
+lm.login_view = "login"
 
 database = "static/database/database.db"
 
@@ -23,11 +35,40 @@ if keep_database != 1:
         conn.commit()
         curr.close()
 
+ADMIN_USERS = ["admin"]
+
+PASSWORDS = {
+    "admin": "$pbkdf2-sha256$29000$7H1v7T0npDRG6D3HmFNqDQ$VunCaN5GU0l9EYYeuHA8xgpLFi36SryJ8syoZcc3Jec",
+    "normaluser": "$pbkdf2-sha256$29000$7b1XqnVuTYmxNkaolXJO6Q$9PqCSCSFkaCM3oeeAcI0O5ZJ6G46Lq1NG3z/dYjlWMA",
+}
+
+@lm.user_loader
+def load_user(user_id):
+    return get_user(user_id, PASSWORDS, ADMIN_USERS)
+
+@app.route('/send', methods=['GET', 'POST'])
+def mail():
+    if request.method == 'POST':
+        try:
+            title = request.form['title']
+            desc = request.form['desc']
+            msg = Message("Request for a Build Idea", sender = "Flask App", recipients = ['doepkead4798@uwec.edu'])
+            msg.body = title + ":\n" + desc
+            mail.send(msg)
+        finally:
+            return redirect('/buildideas')
+
+
 @app.route('/')
 @app.route('/home')
 def main():
-    return render_template('homepage.html', title="Home", header="All you need to know about Minecraft")
+    return render_template('homepage.html', title="Home", header="All you need to know about Minecraft", user=current_user)
 
+
+@app.route('/report')
+@app.route('/report.html')
+def report():
+    return render_template('report.html', title="Project Report", header="Project Report")
 
 @app.route('/getmc')
 def getmc():
@@ -220,9 +261,27 @@ def biform():
 
 
 @app.route('/adminlogin', methods=['GET', 'POST'])
-def login():
+def alogin():
+    session["rd"] = request.referrer
     return render_template('admin-login.html', title="Login", header="Login")
 
+@app.route('/login', methods=['POST'])
+def login():
+    user = request.form.get('user')
+    password = request.form.get('passw')
+    user = get_user(user, PASSWORDS, ADMIN_USERS)
+    if user is not None:
+        if hasher.verify(password, user.password):
+            login_user(user)
+            return redirect(session["rd"])
+    flash("Invalid Info! Try again")
+    return render_template('admin-login.html', title="Login", header="Login")
+
+@app.route('/logout')
+def logout():
+    logout_user()
+    flash("You have logged out.")
+    return redirect(request.referrer)
 
 @app.errorhandler(404)
 def page_not_found():
