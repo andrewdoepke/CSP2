@@ -1,0 +1,173 @@
+#suggest-idea {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+}
+
+#tell-us-button {
+    margin-left: 10px;
+}
+
+/* -------------------- Flip Card ---------------------- */
+
+.cards-container {
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.card-container {
+    background-color: transparent;
+    width: 200px;
+    height: 300px;
+    box-sizing: border-box;
+    perspective: 1000px;
+    margin: 5px;
+
+}
+
+.flip-card-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 10px;
+}
+
+.card-container:hover .flip-card-content {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    background-color: #bbb;
+    border-style: solid;
+    border-radius: 10px;
+    box-sizing: border-box;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.card-front {
+
+}
+
+.card-back {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-end;
+    transform: rotateY(180deg);
+    padding-bottom: 10px;
+}
+
+/* ---------------------------------------------------------------------- */
+
+.card-image{
+    order: 1;
+    height: 200px;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 6px 6px 0 0;
+}
+
+
+#house {
+    object-fit: cover;
+    object-position: -50px;                 /* crops the image into the frame */
+}
+
+#aquarium {
+    object-fit: cover;
+    object-position: -60px;                 /* crops the image into the frame */
+}
+
+#stable {
+    object-fit: cover;
+    object-position: -35px;                 /* crops the image into the frame */
+}
+
+#boat {
+    object-fit: cover;
+    object-position: -85px;                 /* crops the image into the frame */
+}
+
+#nether {
+    object-fit: cover;
+    object-position: 0px;                 /* crops the image into the frame */
+}
+
+.card-description {
+    height: 70px;
+    order: 2;
+    box-sizing: border-box;
+    padding: 5px;
+    border-radius: inherit;
+    margin: 0 auto;
+}
+
+.text-desc {
+    text-align: center;
+}
+
+.build-feedback-perc {
+    order: 3;
+    height: 30px;
+    box-sizing: border-box;
+    text-align: right;
+    padding-right: 5px;
+}
+
+.build-material {
+    height: 200px;
+    flex-grow: 1;
+}
+
+.feedback {
+    display: flex;
+    justify-content: space-around;
+}
+
+/* @Karen likes this look better where the cards all stay the same display size
+@media (max-width: 49.9375em) {
+    .card {
+       width: 300px;
+       height: 400px;
+    }
+}
+
+@media (max-width: 40em) {
+    .card {
+       width: 400px;
+       height: 500px;
+    }
+}
+*/
+
+.tutorial {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.tutorial:hover {
+    color: green;
+}
+
+li {
+    font-size: 1em;
+}
+
+h1 {
+    display: inline-block;
+    display: inline;
+}
+
+.like, .dislike {
+    bottom: 0px;
+
+}

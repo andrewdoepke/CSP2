@@ -1,0 +1,61 @@
+{% extends "template.html" %}
+
+{% block localcss %}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/world-seeds-hub_style.css')}}">
+{% endblock %}
+
+{% block content %}
+    <!-- Main Body of Page -->
+		<div class = "main">
+			<form>
+			<center>
+			<div id = "create-world-seed">
+				<a href="/newseed"><input type="button" value = "Add a World Seed" id = "new-seed" class = "link-buttons"></a>
+				{% if current_user.is_authenticated and current_user.is_admin%}
+				<input type="submit" formaction="/delseeds" formmethod="POST" value = "Delete Seeds" id = "delete-seed" class = "link-buttons">
+            	{% endif %}
+			</div>
+			</center>
+			<h2>Choose your platform: </h2>
+			<div id="choose">
+				<div>
+					<input type="button" name="platform" value="All" id="all" onclick="location.href='/worldseed/all'" class = "link-buttons">
+				</div>
+                <div>
+					<input type="button" name="platform" value="Java" id="java" onclick="location.href='/worldseed/java'" class = "link-buttons">
+				</div>
+				<div>
+                	<input type="button" name="platform" value="Bedrock" id="bedrock" onclick="location.href='/worldseed/bedrock'" class = "link-buttons">
+				</div>
+			</div>
+			<h1>Platform: <span class="proper"> {{ plat }} </span></h1>
+            <div class = "list-world-seeds">
+				<table class="listings" id="list">
+					{% for row in seeds %}
+						<tr>
+							<td>
+								{% if current_user.is_authenticated and current_user.is_admin%}
+								<label class="checkbox">
+								  <input type="checkbox" class = "check-box-input" name="seed" value="{{ row[0] }}"/>
+								</label>
+								{% endif %}
+								<label><a href="/viewseed/{{ row[0] }}">Seed: {{ row[1] }} - Type: {{ tag[loop.index0][1] }}</a></label>
+							</td>
+						</tr>
+					{% endfor %}
+	    		</table>
+			<a href="#to-top"><h3 class="to-top">Back to Top</h3></a>
+			</div>
+			</form>
+		</div>
+{% endblock %}
+
+{% block scripts %}
+	<script>
+		var hi = document.getElementById("list").innerHTML;
+		hi = (hi.trim) ? hi.trim() : hi.replace(/^\s+/,'');
+		if(hi == '') {
+			document.getElementById("list").outerHTML = "<h2 id='nothing'>No World Seeds Available</h2>";
+		}
+	</script>
+{% endblock %}

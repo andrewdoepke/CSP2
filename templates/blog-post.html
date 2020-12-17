@@ -1,0 +1,62 @@
+{% extends "template.html" %}
+
+{% block localcss %}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/blog-post.css')}}">
+{% endblock %}
+
+{% block content %}
+    <!-- Main Body of Page -->
+		<div class = "main">
+			<input type="button" value="Back to Blog Posts" onclick="location.href='/blogpost'" class = "link-buttons">
+			<div id="display">
+				<h1 id="subject">{{ post[1] }}</h1>
+				<p id="body">{{ post[2] }}</p>
+			</div>
+
+			<h1><u>Comments</u></h1>
+			<div id="comments">
+
+				<form>
+				<div id = "list-comments">
+					<table id="list">
+						{% for row in comments %}
+							<tr>
+								<td>
+									<!--<p>-->
+										{% if current_user.is_authenticated and current_user.is_admin%}
+										<label class="checkbox">
+								  			<input type="checkbox" class = "check-box-input" name="commentd" value="{{ row[0] }}" />
+										</label>
+										{% endif %}
+										<label>{{ row[2] }} - {{ row[3] }}</label>
+									<!--</p>-->
+								</td>
+							</tr>
+						{% endfor %}
+					</table>
+	    		</div>
+				{% if current_user.is_authenticated and current_user.is_admin%}
+					<div id="delcomments">
+						<input type="submit" formaction="/delcomm/{{ post[0] }}"  formmethod="POST" value = "Delete" id = "delete-post" class = "link-buttons">
+					</div>
+				{% endif %}
+				</form>
+				<form id="commentform" autocomplete="off">
+					<h2>Add a Comment</h2>
+					<input type="text"  name="myname" placeholder="Your Name" required><br>
+					<input type="text"  name="comment" placeholder="Your Comment" required><br>
+					<input type="submit" id="commentbutton" class = "link-buttons" formaction='/comment/{{ post[0] }}' formmethod="post" value="Comment">
+				</form>
+			</div>
+		</div>
+{% endblock %}
+
+{% block scripts %}
+	<script>
+		var hi = document.getElementById("list").innerHTML;
+		hi = (hi.trim) ? hi.trim() : hi.replace(/^\s+/,'');
+		if(hi == '') {
+			document.getElementById("list").outerHTML = "<h2 id='nothing'>No Comments Available...</h2>";
+		}
+	</script>
+{% endblock %}

@@ -1,0 +1,211 @@
+.stickysticky {
+    position: sticky;
+    top: 0;
+    z-index: 3;
+}
+
+.to-top {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.header {
+	padding: 20px;
+	text-align: center;
+	background-color: #264d00;
+	color: white;
+	font-family: Optima, Didot;
+	font-size: 48px;
+}
+
+/* ------------------------------------------------------------------------ */
+
+.navigation {
+	display: flex;
+	justify-content: center;
+	background-color: #4e2c18;
+}
+
+.navigation a {
+	color: white;
+	padding: 14px 20px;
+	text-decoration: none;
+	text-align: center;
+}
+
+.navigation a:hover {
+	background-color: #754224;
+}
+
+/* ------------------------------------------------------------------------ */
+
+.check-box-input {
+    width: 30px;
+    height: 30px;
+}
+
+/* ------------------------------------------------------------------------ */
+
+.footer-contact-info {
+	box-sizing: border-box;
+	margin: 10px;
+	padding: 10px 10px;
+	font-family: Optima, Didot;
+}
+
+.footer-contact-info > h3 {
+	margin-bottom: 5px;
+}
+
+.social-media-links {
+	height: 2em;
+	float: left;
+	padding-right: 0.5em;
+	margin-top: 0.5em;
+}
+
+.main {
+   padding:10px;
+   padding-bottom:100px;
+   z-index: 2;
+}
+
+/* ------------------------------------------------------------------------ */
+/* Navigation Bar Responsive */
+@media screen and (max-width: 700px) {
+	.navigation {
+		flex-direction: column;
+	}
+
+    /* This is not working as it should
+            .display-download-options {
+                flex-direction: column;
+            }
+    */
+
+    .get-mc {
+        flex-direction: column;
+    }
+
+    #get-mc-home-img, #get-mc-button-np {
+        width: 100%;
+    }
+
+}
+
+/* Small Display */
+@media (max-width: 49.9375em) {
+    .stickysticky {
+        position: static;
+    }
+
+    html {
+        overflow-x: hidden
+    }
+
+}
+
+/* Large Display */
+@media (min-width: 50em) {
+
+}
+
+
+/* ------------------------------------------------------------------------ */
+
+html, body{
+    height: 100%;
+    margin:0;
+    padding:0;
+}
+
+body {
+    background-color: #477A1E; /* #006600 */
+}
+
+#contain{
+   min-height:100%;
+   position:relative;
+}
+
+.footer {
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:120px;
+	display: flex;
+	flex-direction: row;
+	background-color: #264d00; /* #404040 */
+	color: white;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+p, li, input, label, textarea, button {
+    margin-top: 0;
+    font-family: Didot;
+    font-size: 1.45em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-family: Didot;
+}
+
+ul {
+    margin-top: 0;
+	list-style: circle;
+}
+
+ol {
+    margin-top: 0;
+}
+
+table {
+    width: 100%;
+    margin: 10px 0;
+}
+
+td {
+    padding: 10px 0;
+    font-size: 1.75em;
+    border-bottom: 3px solid #194d19;
+    border-collapse: collapse;
+}
+
+td:hover {
+    background-color: #70B237;
+}
+
+/* ------------------------------------------------------------------------ */
+
+input[type=text], textarea, input[type=password] {
+    background-color: #c1a68b;
+    padding: 5px;
+	border: 3px solid #af8c6a;
+	outline: none;
+}
+
+input[type=text]:focus, input[type=password]:focus, textarea:focus {
+    border: 3px solid #74593e;
+}
+
+.link-buttons {
+    background-color: #c1a68b;
+    border: 3px solid #af8c6a;
+    /* add a border */
+}
+
+.link-buttons:hover {
+    background-color: #af8c6a;
+    border: 3px solid #c1a68b;
+    /* not sure if i need to add anything # */
+}
+
+.proper {
+    text-transform: capitalize;
+}

@@ -1,0 +1,24 @@
+{% extends "template.html" %}
+
+{% block localcss %}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/admin.css')}}">
+{% endblock %}
+
+{% block content %}
+    <!-- Main Body of Page -->
+		<div class = "main">
+			<div class = "login-container">
+			<form id="login" method="post">
+				{% for message in get_flashed_messages() %}
+        			{{ message }}
+        		{% endfor %}
+				<label for="user">Username</label>
+				<input type="text" placeholder="Enter Admin Username" name="user" id ="user" required>
+				<label for="passw">Password</label>
+				<input type="password" placeholder="Enter Password" name="passw" id ="passw" required>
+				<br>
+				<center><button type="submit" formmethod="POST" formaction="/login" id = "login-button" class = "link-buttons">Login</button></center>
+			</form>
+			</div>
+		</div>
+{% endblock %}

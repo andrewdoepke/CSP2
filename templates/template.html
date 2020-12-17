@@ -1,0 +1,54 @@
+<html lang="en">
+	<head>
+		<title>{{ title }}</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="{{url_for('static', filename='css/global.css')}}">
+		<link rel="icon" href="{{url_for('static', filename='images/favicon.ico')}}">
+		{% block localcss %} {% endblock %}
+	</head>
+	<body>
+		<div id="contain">
+
+			<a name="to-top"></a>
+			<div class="stickysticky">
+		<!-- Banner at Head of Webpage -->
+				<div class = "header">{{ header }}</div>
+				{% if current_user.is_authenticated and current_user.is_admin%}
+				<h3 style="text-align: center; color: white; background-color: #264d00;">Hello Admin</h3>
+				{% endif %}
+		<!-- Navigation Bar -->
+				<div class = "navigation">
+					<a href="/home">Home</a>
+					<a href="/getmc">Get Minecraft</a>
+					<a href="/blogpost">Blog Posts</a>
+					<a href="/worldseed/all">World Seeds</a>
+					<a href="/buildideas">Build Ideas</a>
+					{% if not current_user.is_authenticated %}
+    					<a href="/adminlogin">Login</a>
+    				{% endif %}
+					{% if current_user.is_authenticated %}
+    					<a href="/logout">Logout</a>
+    				{% endif %}
+				</div>
+			</div>
+
+			{% block content %}
+			{% endblock %}
+
+			<div class = "footer">
+				<div class = "footer-contact-info">
+					<h3>Check out the official Minecraft social media for more</h3>
+					<a href="https://www.instagram.com/minecraft/" target="_blank"><img alt="Instagram logo" src="{{url_for('static', filename='images/instagram-logo.png')}}" class = "social-media-links"></a>
+					<a href="https://twitter.com/Minecraft" target="_blank"><img alt="Twitter logo" src="{{url_for('static', filename='images/twitter-logo.png')}}" class = "social-media-links"></a>
+					<a href="https://www.youtube.com/Minecraft" target="_blank"><img alt="YouTube logo" src="{{url_for('static', filename='images/youtube-logo.png')}}" class = "social-media-links"></a>
+					<a href="https://www.facebook.com/minecraft/" target="_blank"><img alt="Facebook logo" src="{{url_for('static', filename='images/facebook-logo.png')}}" class = "social-media-links"></a>
+					{% if current_user.is_authenticated and current_user.is_admin%}
+						<br><a href="/report" style="color: white;">View Report Page</a>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+    </body>
+	{% block scripts %}
+	{% endblock %}
+</html>

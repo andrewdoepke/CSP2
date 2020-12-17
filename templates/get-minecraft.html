@@ -1,0 +1,119 @@
+{% extends "template.html" %}
+
+{% block localcss %}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/get-mc_style.css')}}">
+{% endblock %}
+
+{% block content %}
+    <!-- Main Body of Page -->
+		<div class = "main">
+			<!-- The 3 pictures at the top -->
+			<h1>Choose your device to get started:</h1>
+			<div class = "display-download-options">
+				<a href="#purchase-download">
+					<div class = "option-selection" id = "computer" onclick="showDownload(this.id)">
+						<img src="{{url_for('static', filename='images/computer.png')}}" alt="computer">
+					</div>
+				</a>
+				<a href="#purchase-download">
+					<div class = "option-selection" id = "mobile" onclick="showDownload(this.id)">
+						<img src="{{url_for('static', filename='images/phone.png')}}" alt="Mobile">
+					</div>
+				</a>
+				<a href="#purchase-download">
+					<div class = "option-selection" id = "console" onclick="showDownload(this.id)">
+						<img src="{{url_for('static', filename='images/console.png')}}" alt="Gaming Console">
+					</div>
+				</a>
+			</div>
+
+			<br>
+
+			<a name="purchase-download"></a>
+			<div class = "selection-displayed" id = "option-selected">
+				<div class = "purchase-where">
+					<h2>Where to purchase/download</h2>
+					<p>Choose which type of device you would like to download Minecraft on:</p>
+<!-- Still need to add part where only certain part displays -->
+			<!-- if mobile -->
+					<ul id="moblist">
+						<li><a href = "https://itunes.apple.com/app/minecraft-pocket-edition/id479516143?mt=8" target="_blank">iOS/iPadOS</a></li>
+						<li><a href = "https://play.google.com/store/apps/details?id=com.mojang.minecraftpe" target="_blank">Android</a></li>
+					</ul>
+
+			<!-- if computer -->
+					<ul id="comlist">
+						<li><a href = "https://www.minecraft.net/en-us/store/minecraft-java-edition" target="_blank">Windows/Mac OS/Linux</a></li>
+						<li><a href = "https://www.minecraft.net/en-us/store/minecraft-windows10" target="_blank">Windows 10</a></li>
+					</ul>
+
+			<!-- if console -->
+					<ul id="conlist">
+						<li><a href = "https://www.nintendo.com/games/detail/minecraft-switch/" target="_blank">Nintendo Switch</a></li>
+						<li><a href = "https://store.playstation.com/en-us/product/UP4433-CUSA00744_00-MINECRAFTPS40001" target="_blank">Playstation</a></li>
+						<li><a href = "https://www.minecraft.net/en-us/store/minecraft-xbox-one" target="_blank">Xbox</a></li>
+					</ul>
+
+					<h2>Buy the game if you still need to, download, and enjoy!</h2>
+				</div>
+			</div>
+			<!-- anchor to top, need to not display when selection not chosen -->
+			<a href="#to-top"><h3 class="to-top">Back to Top</h3></a>
+		</div>
+{% endblock %}
+
+{% block scripts %}
+	<script>
+	function showDownload(id_choice) {
+		var display = document.getElementById("option-selected");
+		var mobile_list = document.getElementById("moblist");
+		var computer_list = document.getElementById("comlist");
+		var console_list = document.getElementById("conlist");
+		var idVal = id_choice;
+
+		if (display.style.display === "none") {
+			display.style.display = "flex";
+
+			if (idVal === "computer") {
+				computer_list.style.display = "block";
+				mobile_list.style.display = "none";
+				console_list.style.display = "none";
+			} else if (idVal === "mobile") {
+				mobile_list.style.display = "block";
+				computer_list.style.display = "none";
+				console_list.style.display = "none";
+			} else if (idVal === "console") {
+				console_list.style.display = "block";
+				mobile_list.style.display = "none";
+				computer_list.style.display = "none";
+			}
+		} else if (display.style.display === "flex") {
+			if (idVal === "computer") {
+				computer_list.style.display = "block";
+				mobile_list.style.display = "none";
+				console_list.style.display = "none";
+			} else if (idVal === "mobile") {
+				mobile_list.style.display = "block";
+				computer_list.style.display = "none";
+				console_list.style.display = "none";
+			} else if (idVal === "console") {
+				console_list.style.display = "block";
+				mobile_list.style.display = "none";
+				computer_list.style.display = "none";
+			}
+		}
+	}
+
+	function showLinks() {
+		var selection = document.getElementById("option-selected");
+	}
+
+	// Hide the div on load
+	document.getElementById("option-selected").style.display = "none";
+
+	document.getElementById("option-selected").onclick = function() {
+  		showDownload(this.id);
+  	};
+
+	</script>
+{% endblock %}

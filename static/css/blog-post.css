@@ -1,0 +1,54 @@
+#subject {
+    text-decoration: underline;
+}
+
+#subject {
+    font-size: 3em;
+}
+
+td {
+    font-size: 1.2em;
+    padding: 15px 0;
+}
+
+input[type=text] {
+    width: 50%;
+}
+
+#commentbutton {
+    width: 140px;
+    margin-left: 15%;
+}
+
+#comments, #commentform {
+    display: flex;
+    flex-direction: column;
+}
+
+#nothing {
+    margin-bottom: 0.5em;
+    color: black;
+}
+
+#commentform h1 {
+    color: black;
+}
+
+#comments {
+    margin-bottom: 1em;
+}
+
+.check-box-input {
+    width: 20px;
+    height: 20px;
+}
+
+@media (max-width: 49.9375em) {
+    input[type=text] {
+        width: 70%;
+    }
+
+    #commentbutton {
+        margin-left: 20%;
+    }
+}

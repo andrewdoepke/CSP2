@@ -1,0 +1,51 @@
+{% extends "template.html" %}
+
+{% block localcss %}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/build-ideas_style.css')}}">
+{% endblock %}
+
+{% block content %}
+    <!-- Main Body of Page -->
+		<div class = "main">
+			<center>
+			<div id = "suggest-idea">
+				<h1>Have a build idea?</h1>
+				<a href="/buildform">
+					<input type="button" value = "Tell Us." id = "tell-us-button" class = "link-buttons">
+				</a><br><br>
+			</div>
+			</center>
+
+			<p>We know with all the freedom Minecraft offers, there is a lot to create or build within your world.
+					That being said, we created this page to inspire you about different builds you can make. In each
+					build, we are displaying what the end result should reflect, what materials you will need, a link to
+					a YouTube video from the original builder, and a section to leave feedback about the build that can
+					tell users that other players like the build too.<br>
+			</p>
+
+			<div class = "cards-container">
+				{% for val in cards %}
+				<div class="card-container">
+  					<div class="flip-card-content">
+    					<div class="card-front">
+							{{ val.frontcode|safe }}
+							<div class = "build-feedback-perc">
+								<b>{{ val.ratio }}% like this</b>
+               				 </div>
+    					</div>
+    					<div class="card-back">
+							{{ val.backcode|safe }}
+							<div class = "feedback">
+								<input type="button" value = "Like" id = "like-build1" class="like" name="like" onclick="window.location.href='/like/{{ val.cid|safe }}'">
+								<input type="button" value = "Dislike" id = "dislike-build1" class="dislike" name="dislike" onclick="window.location.href='/dislike/{{ val.cid|safe }}'">
+							</div>
+    					</div>
+  					</div>
+				</div>
+				{% endfor %}
+			</div>
+
+
+			<a href="#to-top"><h3 class="to-top">Back to Top</h3></a>
+		</div>
+{% endblock %}
