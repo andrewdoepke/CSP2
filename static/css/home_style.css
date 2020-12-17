@@ -62,7 +62,7 @@
     max-height: 100%;
 }
 
-#feature-img {
+#feature-img, #new-feature-title {
     text-align: center;
 }
 

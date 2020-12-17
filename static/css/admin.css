@@ -20,3 +20,8 @@
     margin-bottom: 8vh;
 }
 
+#button-center {
+    display: flex;
+    justify-content: center;
+}
+
