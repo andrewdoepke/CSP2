@@ -8,14 +8,12 @@
     <!-- Main Body of Page -->
 		<div class = "main">
 			<form>
-			<center>
 			<div id = "blog-post-buttons">
 				<input type="button" value = "Create a Post" onclick="window.location.href='/newpost'" id = "new-post" class = "link-buttons">
 				{% if current_user.is_authenticated and current_user.is_admin%}
 					<input type="submit" formaction="/delposts" formmethod="POST" value = "Delete Post" id = "delete-post" class = "link-buttons">
 	    		{% endif %}
 			</div>
-			</center>
 			<div class = "list-blog-posts">
 				<table class="listings" id="list">
 					{% for row in posts %}
