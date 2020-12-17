@@ -44,14 +44,13 @@
 			<div class = "new-features">
 				<h1>New Features</h1>
 				<div id="scroller">
-					<div id = "go-back">
-						<img src="{{url_for('static', filename='images/back.png')}}" alt="Back" class="arrows" id="back-arrow">
+					<div id = "go-back" class="but">
+						<img src="{{url_for('static', filename='images/back.png')}}" alt="Back" class="arrows" id="back-arrow" onclick="back()">
 					</div>
-					<div id = "feature-img">
-<!--						<img src="{{url_for('static', filename='images/new-characters.png')}}" alt="Feature" id = "feature">-->
+					<div id = "feature-img" >
 					</div>
-					<div id = "go-next">
-						<img src="{{url_for('static', filename='images/next.png')}}" alt="Next" class="arrows" id="next-arrow">
+					<div id = "go-next" class="but">
+						<img src="{{url_for('static', filename='images/next.png')}}" alt="Next" class="arrows" id="next-arrow" onclick="next()">
 					</div>
 				</div>
 			</div>
@@ -61,22 +60,25 @@
 {% endblock %}
 
 {% block scripts %}
+
 	<script>
 	const backButton = document.getElementById("go-back");
 	const photoDisplay = document.getElementById("feature-img");
 	const featureDesc = document.getElementById("new-feature-title");
 	const nextButton = document.getElementById("go-next");
 
-	var imgArr = ["<img src="{{url_for('static', filename='images/new-characters.png')}}" alt="Feature" id = "feature">",
-		"<img src="{{url_for('static', filename='images/honey-block.png')}}" alt="Feature" id = "feature">",
-		"<img src="{{url_for('static', filename='images/bee.png')}}" alt="Feature" id = "feature">"];
+
+	var imgArr = ["<img src=" + "{{url_for('static', filename='images/new-characters.png')}}" + ' alt="Feature" id = "feature">',
+		"<img src=" + "{{url_for('static', filename='images/honey-block.png')}}" + ' alt="Feature" id = "feature">',
+		"<img src=" + "{{url_for('static', filename='images/beep.png')}}" + ' alt="Feature" id = "feature">'];
 
 	var imgDesc = ["New Characters", "New Blocks", "New Animals"];
 
 	var i = 0;
 	function display(clickIndex) {
 		i = (i + clickIndex + imgArr.length) % imgArr.length;
-		photoDisplay.outerHTML = imgArr[i];
+		var img = imgArr[i];
+		photoDisplay.innerHTML = img;
 	}
 
 	var k = 0;
@@ -85,11 +87,15 @@
 		featureDesc.innerHTML = imgDesc[k];
 	}
 
-	backButton.addEventListener("click", display(-1));
-	nextButton.addEventListener("click", display(1));
+	function next() {
+		display(1);
+		displayDesc(1);
+	}
 
-	backButton.addEventListener("click", displayDesc(-1));
-	nextButton.addEventListener("click", displayDesc(1));
+	function back() {
+		display(-1);
+		displayDesc(-1);
+	}
 
 	display(0);
 	displayDesc(0);
