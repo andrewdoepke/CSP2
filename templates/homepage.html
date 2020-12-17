@@ -2,7 +2,7 @@
 
 {% block localcss %}
     <link rel="stylesheet" href="{{url_for('static', filename='css/home_style.css')}}">
-	<script type="text/javascript" src="{{url_for('static', filename='js/home.js')}}" defer></script>
+	<script src="{{url_for('static', filename='js/home.js')}}" defer></script>
 {% endblock %}
 
 {% block content %}
@@ -24,11 +24,7 @@
 				</div>
 				<div id = "get-mc-button-np">
 					<h1>Join the Minecraft community today!</h1>
-
-
-			<!-- Make a javacript for this for the onclick using: document.getElementById("link-get-mc").onclick = function () {
-        location.href = "get-minecraft.html"; };-->
- 					<a href="/getmc"><input type="button" value = "Get Minecraft" id = "link-get-mc" class = "link-buttons"></a>
+					<input type="button" onclick="window.location.href='/getmc'" value = "Get Minecraft" id = "link-get-mc" class = "link-buttons">
 				</div>
 			</div>
 			<div id = "about-mc">
