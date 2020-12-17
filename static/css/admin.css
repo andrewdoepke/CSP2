@@ -12,12 +12,11 @@
 
 .main {
     display:flex;
-    align-content: center;
     justify-content: center;
 }
 
 .login-container {
-    margin-top: 15%;
-    margin-bottom: 15%;
+    margin-top: 8vh;
+    margin-bottom: 8vh;
 }
 
