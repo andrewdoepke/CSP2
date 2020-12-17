@@ -2,20 +2,19 @@
 
 {% block localcss %}
     <link rel="stylesheet" href="{{url_for('static', filename='css/world-seeds-hub_style.css')}}">
+	<script src="{{url_for('static', filename='js/wseed.js')}}" defer></script>
 {% endblock %}
 
 {% block content %}
     <!-- Main Body of Page -->
 		<div class = "main">
 			<form>
-			<center>
 			<div id = "create-world-seed">
-				<a href="/newseed"><input type="button" value = "Add a World Seed" id = "new-seed" class = "link-buttons"></a>
+				<input type="button" onclick="location.href='/newseed'" value = "Add a World Seed" id = "new-seed" class = "link-buttons">
 				{% if current_user.is_authenticated and current_user.is_admin%}
 				<input type="submit" formaction="/delseeds" formmethod="POST" value = "Delete Seeds" id = "delete-seed" class = "link-buttons">
             	{% endif %}
 			</div>
-			</center>
 			<h2>Choose your platform: </h2>
 			<div id="choose">
 				<div>
@@ -48,14 +47,4 @@
 			</div>
 			</form>
 		</div>
-{% endblock %}
-
-{% block scripts %}
-	<script>
-		var hi = document.getElementById("list").innerHTML;
-		hi = (hi.trim) ? hi.trim() : hi.replace(/^\s+/,'');
-		if(hi == '') {
-			document.getElementById("list").outerHTML = "<h2 id='nothing'>No World Seeds Available</h2>";
-		}
-	</script>
 {% endblock %}

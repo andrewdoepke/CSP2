@@ -7,14 +7,11 @@
 {% block content %}
     <!-- Main Body of Page -->
 		<div class = "main">
-			<center>
 			<div id = "suggest-idea">
 				<h1>Have a build idea?</h1>
-				<a href="/buildform">
-					<input type="button" value = "Tell Us." id = "tell-us-button" class = "link-buttons">
-				</a><br><br>
+				<input type="button" onclick="window.location.href='/buildform'" value="Tell Us." id="tell-us-button" class="link-buttons">
+				<br><br>
 			</div>
-			</center>
 
 			<p>We know with all the freedom Minecraft offers, there is a lot to create or build within your world.
 					That being said, we created this page to inspire you about different builds you can make. In each
@@ -29,15 +26,15 @@
   					<div class="flip-card-content">
     					<div class="card-front">
 							{{ val.frontcode|safe }}
-							<div class = "build-feedback-perc">
+							<div class="build-feedback-perc">
 								<b>{{ val.ratio }}% like this</b>
                				 </div>
     					</div>
     					<div class="card-back">
 							{{ val.backcode|safe }}
-							<div class = "feedback">
-								<input type="button" value = "Like" id = "like-build1" class="like" name="like" onclick="window.location.href='/like/{{ val.cid|safe }}'">
-								<input type="button" value = "Dislike" id = "dislike-build1" class="dislike" name="dislike" onclick="window.location.href='/dislike/{{ val.cid|safe }}'">
+							<div class="feedback">
+								<input type="button" value="Like" class="like" name="like" onclick="window.location.href='/like/{{ val.cid|safe }}'">
+								<input type="button" value="Dislike" class="dislike" name="dislike" onclick="window.location.href='/dislike/{{ val.cid|safe }}'">
 							</div>
     					</div>
   					</div>

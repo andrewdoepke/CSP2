@@ -2,20 +2,19 @@
 
 {% block localcss %}
     <link rel="stylesheet" href="{{url_for('static', filename='css/blog-posts-hub_style.css')}}">
+	<script src="{{url_for('static', filename='js/posts.js')}}" defer></script>
 {% endblock %}
 
 {% block content %}
     <!-- Main Body of Page -->
 		<div class = "main">
 			<form>
-			<center>
 			<div id = "blog-post-buttons">
-				<a href="/newpost"><input type="button" value = "Create a Post" id = "new-post" class = "link-buttons"></a>
+				<input type="button" value = "Create a Post" onclick="window.location.href='/newpost'" id = "new-post" class = "link-buttons">
 				{% if current_user.is_authenticated and current_user.is_admin%}
 					<input type="submit" formaction="/delposts" formmethod="POST" value = "Delete Post" id = "delete-post" class = "link-buttons">
 	    		{% endif %}
 			</div>
-			</center>
 			<div class = "list-blog-posts">
 				<table class="listings" id="list">
 					{% for row in posts %}
@@ -35,14 +34,4 @@
 			<a href="#to-top"><h3 class="to-top">Back to Top</h3></a>
 			</form>
 		</div>
-{% endblock %}
-
-{% block scripts %}
-	<script>
-		var hi = document.getElementById("list").innerHTML;
-		hi = (hi.trim) ? hi.trim() : hi.replace(/^\s+/,'');
-		if(hi == '') {
-			document.getElementById("list").outerHTML = "<h2 id='nothing'>No Posts Available</h2>";
-		}
-	</script>
 {% endblock %}

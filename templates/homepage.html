@@ -2,6 +2,7 @@
 
 {% block localcss %}
     <link rel="stylesheet" href="{{url_for('static', filename='css/home_style.css')}}">
+	<script src="{{url_for('static', filename='js/home.js')}}" defer></script>
 {% endblock %}
 
 {% block content %}
@@ -23,11 +24,7 @@
 				</div>
 				<div id = "get-mc-button-np">
 					<h1>Join the Minecraft community today!</h1>
-
-
-			<!-- Make a javacript for this for the onclick using: document.getElementById("link-get-mc").onclick = function () {
-        location.href = "get-minecraft.html"; };-->
- 					<a href="/getmc"><input type="button" value = "Get Minecraft" id = "link-get-mc" class = "link-buttons"></a>
+					<input type="button" onclick="window.location.href='/getmc'" value = "Get Minecraft" id = "link-get-mc" class = "link-buttons">
 				</div>
 			</div>
 			<div id = "about-mc">
@@ -54,50 +51,7 @@
 					</div>
 				</div>
 			</div>
-			<p id = "new-feature-title" align="center"></p>
+			<p id = "new-feature-title"></p>
 			<a href="#to-top"><h3 class="to-top">Back to Top</h3></a>
 		</div>
-{% endblock %}
-
-{% block scripts %}
-
-	<script>
-	const backButton = document.getElementById("go-back");
-	const photoDisplay = document.getElementById("feature-img");
-	const featureDesc = document.getElementById("new-feature-title");
-	const nextButton = document.getElementById("go-next");
-
-
-	var imgArr = ["<img src=" + "{{url_for('static', filename='images/new-characters.png')}}" + ' alt="Feature" id = "feature">',
-		"<img src=" + "{{url_for('static', filename='images/honey-block.png')}}" + ' alt="Feature" id = "feature">',
-		"<img src=" + "{{url_for('static', filename='images/beep.png')}}" + ' alt="Feature" id = "feature">'];
-
-	var imgDesc = ["New Characters", "New Blocks", "New Animals"];
-
-	var i = 0;
-	function display(clickIndex) {
-		i = (i + clickIndex + imgArr.length) % imgArr.length;
-		var img = imgArr[i];
-		photoDisplay.innerHTML = img;
-	}
-
-	var k = 0;
-	function displayDesc(clickIndex) {
-		k = (k + clickIndex + imgDesc.length) % imgDesc.length;
-		featureDesc.innerHTML = imgDesc[k];
-	}
-
-	function next() {
-		display(1);
-		displayDesc(1);
-	}
-
-	function back() {
-		display(-1);
-		displayDesc(-1);
-	}
-
-	display(0);
-	displayDesc(0);
-	</script>
 {% endblock %}
