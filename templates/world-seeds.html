@@ -8,14 +8,12 @@
     <!-- Main Body of Page -->
 		<div class = "main">
 			<form>
-			<center>
 			<div id = "create-world-seed">
 				<a href="/newseed"><input type="button" value = "Add a World Seed" id = "new-seed" class = "link-buttons"></a>
 				{% if current_user.is_authenticated and current_user.is_admin%}
 				<input type="submit" formaction="/delseeds" formmethod="POST" value = "Delete Seeds" id = "delete-seed" class = "link-buttons">
             	{% endif %}
 			</div>
-			</center>
 			<h2>Choose your platform: </h2>
 			<div id="choose">
 				<div>
