@@ -48,14 +48,50 @@
 						<img src="{{url_for('static', filename='images/back.png')}}" alt="Back" class="arrows" id="back-arrow">
 					</div>
 					<div id = "feature-img">
-						<img src="{{url_for('static', filename='images/new-characters.png')}}" alt="Feature" id = "feature">
+<!--						<img src="{{url_for('static', filename='images/new-characters.png')}}" alt="Feature" id = "feature">-->
 					</div>
 					<div id = "go-next">
 						<img src="{{url_for('static', filename='images/next.png')}}" alt="Next" class="arrows" id="next-arrow">
 					</div>
 				</div>
 			</div>
-			<p id = "-new-feature-title" align="center">New Characters</p>
+			<p id = "new-feature-title" align="center"></p>
 			<a href="#to-top"><h3 class="to-top">Back to Top</h3></a>
 		</div>
+{% endblock %}
+
+{% block scripts %}
+	<script>
+	const backButton = document.getElementById("go-back");
+	const photoDisplay = document.getElementById("feature-img");
+	const featureDesc = document.getElementById("new-feature-title");
+	const nextButton = document.getElementById("go-next");
+
+	var imgArr = ["<img src="{{url_for('static', filename='images/new-characters.png')}}" alt="Feature" id = "feature">",
+		"<img src="{{url_for('static', filename='images/honey-block.png')}}" alt="Feature" id = "feature">",
+		"<img src="{{url_for('static', filename='images/bee.png')}}" alt="Feature" id = "feature">"];
+
+	var imgDesc = ["New Characters", "New Blocks", "New Animals"];
+
+	var i = 0;
+	function display(clickIndex) {
+		i = (i + clickIndex + imgArr.length) % imgArr.length;
+		photoDisplay.outerHTML = imgArr[i];
+	}
+
+	var k = 0;
+	function displayDesc(clickIndex) {
+		k = (k + clickIndex + imgDesc.length) % imgDesc.length;
+		featureDesc.innerHTML = imgDesc[k];
+	}
+
+	backButton.addEventListener("click", display(-1));
+	nextButton.addEventListener("click", display(1));
+
+	backButton.addEventListener("click", displayDesc(-1));
+	nextButton.addEventListener("click", displayDesc(1));
+
+	display(0);
+	displayDesc(0);
+	</script>
 {% endblock %}
